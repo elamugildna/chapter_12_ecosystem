@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ecosystem Study Portal — KCET &amp; NEET Question Banks (100 Questions)</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #ffffff !important;
+      }
+      .q-card {
+        box-shadow: none !important;
+        border: 1px solid #e2e8f0 !important;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
+  <!-- Top Navigation Header -->
+  <header class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm no-print">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <button id="brandHomeBtn" type="button" class="flex items-center gap-2.5 text-left group">
+          <div class="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-extrabold text-sm shadow-sm group-hover:bg-emerald-700 transition">ECO</div>
+          <div>
+            <h1 class="text-base sm:text-lg font-bold text-slate-900 leading-tight">Ecosystem Study Portal</h1>
+            <p class="text-xs text-slate-500">KCET &amp; NEET PYQ Question Banks &bull; 100 Aligned Questions (2000–2026)</p>
+          </div>
+        </button>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl text-xs sm:text-sm font-semibold text-slate-600">
+        <button id="navHomeBtn" type="button" class="px-3 py-1.5 rounded-lg bg-white text-emerald-700 shadow-xs transition">Home Portal</button>
+        <button id="navKcetBtn" type="button" class="px-3 py-1.5 rounded-lg hover:text-slate-900 transition">KCET Bank (45)</button>
+        <button id="navNeetBtn" type="button" class="px-3 py-1.5 rounded-lg hover:text-slate-900 transition">NEET PYQ Bank (55)</button>
+        <button id="navNotesBtn" type="button" class="px-3 py-1.5 rounded-lg hover:text-slate-900 transition">Revision Notes</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 py-6">
+
+    <!-- VIEW 1: HOME PORTAL DASHBOARD -->
+    <section id="homeView" class="space-y-6">
+      <!-- Hero Banner -->
+      <div class="rounded-2xl bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white p-6 sm:p-8 shadow-md">
+        <span class="inline-block px-3 py-1 bg-white/10 text-emerald-200 text-xs font-semibold rounded-full mb-3 tracking-wide">
+          Complete Biology Exam Preparation Portal &bull; NCERT Class 12 Chapter 12 (Unit X: Ecology)
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-2">
+          Ecosystem: KCET &amp; NEET PYQ Portal
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed mb-6">
+          Practice 100 authentic previous year questions from KCET (2014–2026) and AIPMT/NEET (2000–2026, including Re-NEET 2026, NEET 2025, NEET 2024, and NTA 304 E). Covers ecosystem stratification, primary and secondary productivity (GPP, NPP = GPP - R), 5-step decomposition sequences, humification, Lindeman's 10% law, food chains (GFC vs DFC), standing crop, inverted pyramids of biomass in aquatic ecosystems, and limitations of ecological pyramids.
+        </p>
+        <div class="flex flex-wrap items-center gap-3">
+          <button id="heroStartKcetBtn" type="button" class="px-5 py-2.5 rounded-xl bg-white text-emerald-950 font-bold text-sm shadow hover:bg-slate-100 transition">
+            Open KCET Bank (45 Qs)
+          </button>
+          <button id="heroStartNeetBtn" type="button" class="px-5 py-2.5 rounded-xl bg-emerald-600 text-white font-bold text-sm shadow hover:bg-emerald-700 transition">
+            Open NEET PYQ Bank (55 Qs)
+          </button>
+          <button id="heroOpenNotesBtn" type="button" class="px-5 py-2.5 rounded-xl bg-slate-800 text-slate-200 font-semibold text-sm hover:bg-slate-700 transition">
+            View Revision Notes
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Statistics & Progress Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-xs">
+          <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Question Bank</p>
+          <p class="text-2xl font-extrabold text-slate-900 mt-1">100 Questions</p>
+          <p class="text-xs text-slate-500 mt-1">45 KCET + 55 NEET PYQ items (2000–2026)</p>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-xs">
+          <p class="text-xs font-bold text-emerald-600 uppercase tracking-wider">KCET Practice Progress</p>
+          <p id="statKcetProgress" class="text-2xl font-extrabold text-emerald-700 mt-1">0 / 45</p>
+          <p id="statKcetScore" class="text-xs text-slate-500 mt-1">Score: 0 correct (0%)</p>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-xs">
+          <p class="text-xs font-bold text-teal-600 uppercase tracking-wider">NEET PYQ Progress</p>
+          <p id="statNeetProgress" class="text-2xl font-extrabold text-teal-700 mt-1">0 / 55</p>
+          <p id="statNeetScore" class="text-xs text-slate-500 mt-1">Score: 0 correct (0%)</p>
+        </div>
+      </div>
+
+      <!-- Module Selection Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+        <!-- Module 1: KCET Bank -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs flex flex-col justify-between hover:border-emerald-300 transition">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-700 text-xs font-bold">Module 1 &bull; Q1–Q45</span>
+              <span class="text-xs font-semibold text-slate-400">45 MCQs</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">KCET Ecosystem Question Bank (2014–2026)</h3>
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">
+              Includes all latest questions from <strong>KCET 2026</strong> (Q47: 5 steps of decomposition in sequence; Q48: Annual NPP of land 115 and ocean 55 billion tons) and <strong>KCET 2025</strong> (Q54: Decomposition sequence; Q55: Ecological pyramid limitations).
+            </p>
+            <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+              <li class="flex items-center gap-1.5">&bull; Complete coverage of Karnataka CET from 2014 through 2026</li>
+              <li class="flex items-center gap-1.5">&bull; Switch between clean Document View and Practice Quiz modes</li>
+            </ul>
+          </div>
+          <div class="flex items-center gap-3 pt-2">
+            <button id="cardKcetDocBtn" type="button" class="flex-1 py-2 rounded-xl bg-emerald-600 text-white font-semibold text-xs hover:bg-emerald-700 transition">
+              Read Question Bank
+            </button>
+            <button id="cardKcetQuizBtn" type="button" class="flex-1 py-2 rounded-xl bg-emerald-50 text-emerald-700 font-semibold text-xs hover:bg-emerald-100 transition">
+              Start Practice Quiz
+            </button>
+          </div>
+        </div>
+
+        <!-- Module 2: NEET PYQ Bank -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs flex flex-col justify-between hover:border-teal-300 transition">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2.5 py-1 rounded-md bg-teal-50 text-teal-700 text-xs font-bold">Module 2 &bull; Q1–Q55</span>
+              <span class="text-xs font-semibold text-slate-400">55 MCQs</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">NEET &amp; AIPMT PYQ Bank (2000–2026)</h3>
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">
+              Comprehensive national entrance collection including <strong>Re-NEET 2026</strong> (Q146: Primary consumers are herbivores; Q149: Inverted biomass pyramid in sea; Q178: Unidirectional energy flow &amp; 10% law), <strong>NEET 2025</strong> (Q93: Solar energy and NPP=GPP-R; Q153: Energy flow &amp; thermodynamics; Q154: Productivity units), <strong>NEET 2024</strong> (Q94: Matching productivity terms; Q99: Decomposition terms), and <strong>NTA 304 E</strong> (Q25: Mineralisation; Q26: Marine biomass; Q27: Decomposition conditions; Q28: Standing crop vs state).
+            </p>
+            <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+              <li class="flex items-center gap-1.5">&bull; Rigorous matching tables, multi-statement, and assertion-reasoning items</li>
+              <li class="flex items-center gap-1.5">&bull; Detailed NCERT rationales and quick answer matrix</li>
+            </ul>
+          </div>
+          <div class="flex items-center gap-3 pt-2">
+            <button id="cardNeetDocBtn" type="button" class="flex-1 py-2 rounded-xl bg-teal-600 text-white font-semibold text-xs hover:bg-teal-700 transition">
+              Read Question Bank
+            </button>
+            <button id="cardNeetQuizBtn" type="button" class="flex-1 py-2 rounded-xl bg-teal-50 text-teal-700 font-semibold text-xs hover:bg-teal-100 transition">
+              Start Practice Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: QUESTION BANK VIEW (FOR KCET & NEET) -->
+    <section id="bankView" class="hidden space-y-5">
+      <!-- Bank Toolbar & Controls -->
+      <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-xs flex flex-wrap items-center justify-between gap-4 no-print">
+        <div>
+          <h2 id="bankTitle" class="text-xl font-bold text-slate-900">Question Bank</h2>
+          <p id="bankSubtitle" class="text-xs text-slate-500">Karnataka CET &bull; Aligned NCERT Previous Year Questions</p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <!-- View Mode Toggle -->
+          <div class="flex items-center bg-slate-100 p-1 rounded-xl text-xs font-bold text-slate-600">
+            <button id="modeDocBtn" type="button" class="px-3 py-1.5 rounded-lg bg-white text-emerald-700 shadow-xs transition">Document View</button>
+            <button id="modeQuizBtn" type="button" class="px-3 py-1.5 rounded-lg hover:text-slate-900 transition">Practice Quiz</button>
+          </div>
+
+          <!-- Answer Key Toggle -->
+          <button id="toggleAnswersBtn" type="button" class="px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-xs font-bold text-slate-700 hover:bg-slate-50 transition">
+            Hide Answer Badges
+          </button>
+
+          <!-- Print / PDF Export Button -->
+          <button id="printBtn" type="button" class="px-3 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition">
+            Print / Save as PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Quiz Score Banner (visible in Quiz Mode) -->
+      <div id="quizScoreBanner" class="hidden bg-emerald-50 border border-emerald-200 rounded-xl p-4 flex flex-wrap items-center justify-between gap-3 text-emerald-900 no-print">
+        <div class="flex items-center gap-4 text-xs sm:text-sm font-semibold">
+          <span>Attempted: <strong id="quizAttemptedCount" class="text-emerald-700 font-extrabold">0</strong></span>
+          <span>Correct: <strong id="quizCorrectCount" class="text-teal-700 font-extrabold">0</strong></span>
+          <span>Wrong: <strong id="quizWrongCount" class="text-rose-700 font-extrabold">0</strong></span>
+          <span>Accuracy: <strong id="quizAccuracy" class="text-emerald-700 font-extrabold">0%</strong></span>
+        </div>
+        <button id="resetQuizBtn" type="button" class="px-3 py-1.5 rounded-lg bg-white border border-emerald-300 text-xs font-bold text-emerald-700 hover:bg-emerald-100 transition">
+          Reset All Answers
+        </button>
+      </div>
+
+      <!-- Filters & Instant Search -->
+      <div class="bg-white rounded-xl border border-slate-200 p-3 shadow-xs space-y-3 no-print">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex-1 min-w-[240px]">
+            <input id="searchInput" type="text" placeholder="Search keywords (e.g. fragmentation, GPP, NPP, 10 percent, inverted pyramid, humus)..." class="w-full text-xs px-3 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+          </div>
+          <span id="filteredCountBadge" class="text-xs font-bold text-slate-500">Showing all items</span>
+        </div>
+
+        <!-- Topic Pills -->
+        <div id="topicPillsContainer" class="flex flex-wrap gap-1.5 text-xs">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Question List Container -->
+      <div id="questionsContainer" class="space-y-4">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Master Answer Key Matrix (At Bottom) -->
+      <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-xs">
+        <h3 class="text-sm font-bold text-slate-900 mb-3 uppercase tracking-wider">Quick Answer Key Matrix</h3>
+        <div id="answerKeyMatrix" class="grid grid-cols-5 sm:grid-cols-10 md:grid-cols-12 gap-1.5 text-xs font-bold">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: NCERT HIGH-YIELD REVISION NOTES -->
+    <section id="notesView" class="hidden space-y-6">
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-xs">
+        <div class="border-b border-slate-100 pb-4 mb-6">
+          <span class="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-bold">NCERT Class 12 Chapter 12</span>
+          <h2 class="text-2xl font-extrabold text-slate-900 mt-2">Ecosystem — High-Yield Revision Summary</h2>
+          <p class="text-xs text-slate-500 mt-1">Structure, stratification, productivity metrics, decomposition stages, food chains, trophic energy transfer, and ecological pyramids.</p>
+        </div>
+
+        <!-- Section 1: Ecosystem Structure & Stratification -->
+        <div class="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed mb-8">
+          <h3 class="text-base font-bold text-emerald-900 border-b border-emerald-100 pb-2 flex items-center gap-2">
+            1. Ecosystem Structure &amp; Stratification
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <p><strong>Definition:</strong> Functional unit of nature where living organisms interact among themselves and with the physical environment.</p>
+              <p>&bull; <strong>Categories:</strong> Terrestrial (forest, grassland, desert) and Aquatic (pond, lake, wetland, river, estuary). Man-made: crop fields, aquaria.</p>
+              <p>&bull; <strong>Species Composition:</strong> Identification and enumeration of plant and animal species of an ecosystem.</p>
+              <p>&bull; <strong>Stratification:</strong> Vertical distribution of different species occupying different levels. E.g., trees occupy top vertical strata, shrubs the second, herbs and grasses the bottom layer.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <p><strong>Pond as a Functional Unit:</strong></p>
+              <p>&bull; <em>Abiotic:</em> Water, dissolved inorganic/organic substances, bottom soil deposit, solar radiation.</p>
+              <p>&bull; <em>Producers:</em> Phytoplankton, algae, floating/submerged/marginal plants.</p>
+              <p>&bull; <em>Consumers:</em> Zooplankton, free-swimming and benthic (bottom-dwelling) forms.</p>
+              <p>&bull; <em>Decomposers:</em> Fungi, bacteria, and flagellates abundant at the pond floor.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Productivity Metrics -->
+        <div class="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed mb-8">
+          <h3 class="text-base font-bold text-emerald-900 border-b border-emerald-100 pb-2 flex items-center gap-2">
+            2. Primary &amp; Secondary Productivity Metrics
+          </h3>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <p>&bull; <strong>Primary Production:</strong> Amount of biomass or organic matter produced per unit area over a time period by plants during photosynthesis ($g\,m^{-2}$ or $kcal\,m^{-2}$).</p>
+            <p>&bull; <strong>Productivity:</strong> Rate of biomass production ($g\,m^{-2}\,yr^{-1}$ or $kcal\,m^{-2}\,yr^{-1}$).</p>
+            <p>&bull; <strong>Gross Primary Productivity (GPP):</strong> Rate of production of organic matter during photosynthesis.</p>
+            <p>&bull; <strong>Net Primary Productivity (NPP):</strong> Biomass left after respiratory utilization by plants: <strong>$\mathbf{NPP = GPP - R}$</strong>. Available biomass for heterotrophs.</p>
+            <p>&bull; <strong>Secondary Productivity:</strong> Rate of formation of new organic matter by consumers.</p>
+            <p>&bull; <strong>Biosphere NPP:</strong> Approximately <strong>170 billion tons</strong> (dry weight). Land accounts for <strong>115 billion tons</strong>; oceans account for only <strong>55 billion tons</strong> (despite covering ~70% of Earth's surface, due to light limitation and nutrient deficiency).</p>
+          </div>
+        </div>
+
+        <!-- Section 3: Decomposition Cycle -->
+        <div class="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed mb-8">
+          <h3 class="text-base font-bold text-emerald-900 border-b border-emerald-100 pb-2 flex items-center gap-2">
+            3. Decomposition Process &amp; Factors
+          </h3>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <p><strong>Five Steps in Decomposition:</strong></p>
+            <ol class="list-decimal list-inside space-y-1 pl-2">
+              <li><strong>Fragmentation:</strong> Detritivores (e.g. earthworms) break down detritus into smaller particles.</li>
+              <li><strong>Leaching:</strong> Water-soluble inorganic nutrients percolate into soil horizons and precipitate as unavailable salts.</li>
+              <li><strong>Catabolism:</strong> Bacterial and fungal enzymes degrade detritus into simpler inorganic substances.</li>
+              <li><strong>Humification:</strong> Leads to accumulation of dark-coloured amorphous substance called <em>humus</em> (colloidal, nutrient reservoir, highly resistant to microbial degradation).</li>
+              <li><strong>Mineralisation:</strong> Humus is further degraded by microbes to release inorganic nutrients ($CO_2, H_2O$, minerals).</li>
+            </ol>
+            <p class="pt-2"><strong>Factors Regulating Rate:</strong></p>
+            <p>&bull; <em>Chemical Composition:</em> Slow if detritus is rich in <strong>lignin and chitin</strong>; rapid if rich in <strong>nitrogen and water-soluble sugars</strong>.</p>
+            <p>&bull; <em>Climatic Factors:</em> Favoured by <strong>warm and moist</strong> environments; inhibited by <strong>low temperature and anaerobiosis</strong>.</p>
+          </div>
+        </div>
+
+        <!-- Section 4: Energy Flow & Pyramids -->
+        <div class="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
+          <h3 class="text-base font-bold text-emerald-900 border-b border-emerald-100 pb-2 flex items-center gap-2">
+            4. Energy Flow &amp; Ecological Pyramids
+          </h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse border border-slate-200 text-xs">
+              <thead class="bg-slate-100 font-bold text-slate-800">
+                <tr>
+                  <th class="border border-slate-200 p-2">Parameter</th>
+                  <th class="border border-slate-200 p-2">Details &amp; NCERT Values</th>
+                  <th class="border border-slate-200 p-2">Key Principles &amp; Exceptions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="border border-slate-200 p-2 font-bold">Solar Energy &amp; PAR</td>
+                  <td class="border border-slate-200 p-2">&lt; 50% of incident radiation is PAR (Photosynthetically Active Radiation). Plants capture only <strong>2–10% of PAR</strong> (1–5% of incident solar radiation).</td>
+                  <td class="border border-slate-200 p-2">Sustains entire living world; unidirectional flow obeying 1st and 2nd laws of thermodynamics.</td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="border border-slate-200 p-2 font-bold">Food Chains (GFC vs DFC)</td>
+                  <td class="border border-slate-200 p-2">GFC (Grazing Food Chain): Producer &rarr; Herbivore &rarr; Carnivore. DFC (Detritus Food Chain): Begins with dead organic matter/detritus &rarr; Saprotrophs.</td>
+                  <td class="border border-slate-200 p-2">In oceans/aquatic systems, GFC is the major energy conduit. In terrestrial systems, DFC transfers far more energy.</td>
+                </tr>
+                <tr>
+                  <td class="border border-slate-200 p-2 font-bold">10% Lindeman's Law</td>
+                  <td class="border border-slate-200 p-2">Only <strong>10 percent</strong> of energy is transferred to each successive trophic level; 90% is lost as metabolic heat.</td>
+                  <td class="border border-slate-200 p-2">Limits the number of trophic levels in a grazing food chain (usually 4–5 levels maximum).</td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="border border-slate-200 p-2 font-bold">Standing Crop vs State</td>
+                  <td class="border border-slate-200 p-2"><strong>Standing crop:</strong> Mass of living material (biomass measured as dry weight) at a particular time. <strong>Standing state:</strong> Amount of mineral nutrients in soil.</td>
+                  <td class="border border-slate-200 p-2">Dry weight biomass measurement is more accurate than fresh weight because fresh weight varies with water content.</td>
+                </tr>
+                <tr>
+                  <td class="border border-slate-200 p-2 font-bold">Pyramid of Numbers</td>
+                  <td class="border border-slate-200 p-2">Upright in grasslands (e.g. 5.84M plants support 3 top carnivores). Inverted/spindle in single large tree supporting herbivorous insects and birds.</td>
+                  <td class="border border-slate-200 p-2">Tree ecosystem: 1 tree (producer) &rarr; hundreds of insects &rarr; birds.</td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="border border-slate-200 p-2 font-bold">Pyramid of Biomass</td>
+                  <td class="border border-slate-200 p-2">Upright in grassland/forest (809 &gt; 37 &gt; 11 &gt; 1.5 $kg\,m^{-2}$). <strong>Inverted in sea/lake</strong>: small standing crop of phytoplankton (4 $g\,m^{-2}$) supports large standing crop of zooplankton/fishes (21 $g\,m^{-2}$).</td>
+                  <td class="border border-slate-200 p-2">Inverted due to rapid turnover rate and short lifespan of phytoplankton.</td>
+                </tr>
+                <tr>
+                  <td class="border border-slate-200 p-2 font-bold">Pyramid of Energy</td>
+                  <td class="border border-slate-200 p-2"><strong>Always upright, can never be inverted.</strong> (e.g. 10,000 J producer &rarr; 1,000 J primary consumer &rarr; 100 J secondary consumer &rarr; 10 J tertiary consumer).</td>
+                  <td class="border border-slate-200 p-2">Energy is dissipated as heat at each trophic step obeying 2nd law of thermodynamics.</td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="border border-slate-200 p-2 font-bold">Pyramid Limitations</td>
+                  <td class="border border-slate-200 p-2">1. Ignores species functioning at multiple trophic levels (e.g. sparrow as seed eater and insect eater).<br>2. Assumes simple food chain; cannot accommodate food webs.<br>3. <strong>Excludes saprophytes/decomposers</strong> completely despite their vital role.</td>
+                  <td class="border border-slate-200 p-2">Frequently tested in KCET &amp; NEET exams.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-500 no-print">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-semibold text-slate-700">Ecosystem — High-Yield Examination Preparation Portal</p>
+      <p class="mt-1">Compiled with authentic KCET (2014–2026) and NEET/AIPMT (2000–2026) question papers and NCERT Class 12 Biology guidelines.</p>
+    </div>
+  </footer>
+
+  <!-- CLIENT-SIDE SCRIPT -->
+  <script>
+    const KCET_DATA = [
+      {"topic": "Decomposition", "tag": "KCET 2026", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2026 Biology Paper (Q47)", "stem": "Which one of the following options represents the steps of decomposition in sequence?", "extras": [], "options": [{"marker": "A", "text": "Fragmentation -> Humification -> Leaching -> Catabolism -> Mineralization"}, {"marker": "B", "text": "Fragmentation -> Leaching -> Catabolism -> Humification -> Mineralization"}, {"marker": "C", "text": "Fragmentation -> Humification -> Mineralization -> Leaching -> Catabolism"}, {"marker": "D", "text": "Fragmentation -> Catabolism -> Humification -> Mineralization -> Leaching"}], "answerIndex": 1, "explanation": "According to NCERT Chapter 12 Section 12.3, the sequential steps in decomposition are: Fragmentation -> Leaching -> Catabolism -> Humification -> Mineralization.", "num": 1},
+      {"topic": "Productivity", "tag": "KCET 2026", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2026 Biology Paper (Q48)", "stem": "The annual net primary productivity on land and ocean respectively are ________ and ________ billion tons.", "extras": [], "options": [{"marker": "A", "text": "170, 107"}, {"marker": "B", "text": "115, 55"}, {"marker": "C", "text": "55, 115"}, {"marker": "D", "text": "107, 170"}], "answerIndex": 1, "explanation": "The annual net primary productivity of the whole biosphere is ~170 billion tons (dry weight). Of this, terrestrial land accounts for 115 billion tons, while oceans account for only 55 billion tons despite covering ~70% of the Earth's surface.", "num": 2},
+      {"topic": "Decomposition", "tag": "KCET 2025", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2025 Biology Paper (Q54)", "stem": "Choose the correct sequence of steps involved in decomposition:", "extras": [], "options": [{"marker": "A", "text": "Fragmentation -> Catabolism -> Leaching -> Humification -> Mineralisation"}, {"marker": "B", "text": "Fragmentation -> Leaching -> Catabolism -> Mineralisation -> Humification"}, {"marker": "C", "text": "Fragmentation -> Mineralisation -> Humification -> Leaching -> Catabolism"}, {"marker": "D", "text": "Fragmentation -> Leaching -> Catabolism -> Humification -> Mineralisation"}], "answerIndex": 3, "explanation": "The standard sequence of steps operating in the decomposition of detritus is: Fragmentation by detritivores, Leaching of water-soluble inorganic nutrients, Catabolism by bacterial/fungal enzymes, Humification forming humus, and Mineralisation releasing inorganic nutrients.", "num": 3},
+      {"topic": "Ecological Pyramids", "tag": "KCET 2025", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2025 Biology Paper (Q55)", "stem": "With respect to limitations of ecological pyramids, which of the following statements are correct?\na) It does not take into account the same species belonging to two or more trophic levels.\nb) It assumes a simple food chain, something that almost never exists in nature.\nc) It accommodates saprophytes.\nd) It does not accommodate a food web.\nChoose the correct answer from the options given below:", "extras": [], "options": [{"marker": "A", "text": "a and b"}, {"marker": "B", "text": "b and c"}, {"marker": "C", "text": "c and d"}, {"marker": "D", "text": "a, b and d"}], "answerIndex": 3, "explanation": "Statements a, b, and d are correct. Statement c is false because saprophytes/decomposers are completely excluded from ecological pyramids despite playing a pivotal role in ecosystems.", "num": 4},
+      {"topic": "Productivity", "tag": "KCET 2024", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2024 Biology Paper", "stem": "Gross primary productivity minus respiration losses (R) gives:", "extras": [], "options": [{"marker": "A", "text": "Net Primary Productivity (NPP)"}, {"marker": "B", "text": "Secondary productivity"}, {"marker": "C", "text": "Standing crop"}, {"marker": "D", "text": "Net community consumption"}], "answerIndex": 0, "explanation": "GPP - R = NPP. Net primary productivity represents the remaining biomass available for consumption by heterotrophs (herbivores and decomposers).", "num": 5},
+      {"topic": "Ecological Pyramids", "tag": "KCET 2024", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2024 Biology Paper", "stem": "Which ecological pyramid is ALWAYS upright and can never be inverted in any ecosystem?", "extras": [], "options": [{"marker": "A", "text": "Pyramid of energy"}, {"marker": "B", "text": "Pyramid of biomass"}, {"marker": "C", "text": "Pyramid of number"}, {"marker": "D", "text": "Both pyramid of number and biomass"}], "answerIndex": 0, "explanation": "The pyramid of energy is always upright because during energy transfer between trophic levels, approximately 90% is dissipated as heat, leaving only ~10% available for the next level (obeying thermodynamics).", "num": 6},
+      {"topic": "Energy Flow & Food Chains", "tag": "KCET 2023", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2023 Biology Paper", "stem": "In a grazing food chain, if primary producers synthesize organic biomass storing 10,000 J of energy, how much energy will be available to the tertiary consumer?", "extras": [], "options": [{"marker": "A", "text": "10 J"}, {"marker": "B", "text": "100 J"}, {"marker": "C", "text": "1,000 J"}, {"marker": "D", "text": "1 J"}], "answerIndex": 0, "explanation": "Following Lindeman's 10% law: Producers (10,000 J) -> Primary consumers (1,000 J) -> Secondary consumers (100 J) -> Tertiary consumers (10 J).", "num": 7},
+      {"topic": "Decomposition", "tag": "KCET 2023", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2023 Biology Paper", "stem": "During decomposition, the degradation of detritus into simpler inorganic substances by bacterial and fungal enzymes is termed:", "extras": [], "options": [{"marker": "A", "text": "Catabolism"}, {"marker": "B", "text": "Fragmentation"}, {"marker": "C", "text": "Leaching"}, {"marker": "D", "text": "Humification"}], "answerIndex": 0, "explanation": "Bacterial and fungal extracellular enzymes degrade detritus into simpler inorganic substances through catabolism.", "num": 8},
+      {"topic": "Structure & Stratification", "tag": "KCET 2022", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2022 Biology Paper", "stem": "Vertical distribution of different species occupying different levels in a biotic community is called:", "extras": [], "options": [{"marker": "A", "text": "Stratification"}, {"marker": "B", "text": "Zonation"}, {"marker": "C", "text": "Scarification"}, {"marker": "D", "text": "Standing crop"}], "answerIndex": 0, "explanation": "Stratification is the vertical layering of species in an ecosystem (e.g. trees in canopy stratum, shrubs in middle stratum, herbs/grasses at ground stratum).", "num": 9},
+      {"topic": "Ecological Pyramids", "tag": "KCET 2022", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2022 Biology Paper", "stem": "The pyramid of biomass in a sea or lake is generally inverted because:", "extras": [], "options": [{"marker": "A", "text": "The biomass of fishes far exceeds that of phytoplankton"}, {"marker": "B", "text": "Phytoplankton produce more biomass than fishes"}, {"marker": "C", "text": "Energy decreases at higher levels"}, {"marker": "D", "text": "Fishes are primary producers"}], "answerIndex": 0, "explanation": "In aquatic ecosystems, the small standing crop of phytoplankton with short life-spans and high turnover supports a much larger standing biomass of long-lived zooplankton and fishes, generating an inverted pyramid.", "num": 10},
+      {"topic": "Energy Flow & Food Chains", "tag": "KCET 2021", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2021 Biology Paper", "stem": "The Detritus Food Chain (DFC) begins with:", "extras": [], "options": [{"marker": "A", "text": "Dead organic matter"}, {"marker": "B", "text": "Phytoplankton"}, {"marker": "C", "text": "Green plants"}, {"marker": "D", "text": "Herbivores"}], "answerIndex": 0, "explanation": "Unlike the grazing food chain which begins with living green plants, the detritus food chain (DFC) initiates with dead organic matter (detritus) broken down by saprotrophs.", "num": 11},
+      {"topic": "Decomposition", "tag": "KCET 2021", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2021 Biology Paper", "stem": "The rate of decomposition is slower if detritus is exceptionally rich in:", "extras": [], "options": [{"marker": "A", "text": "Lignin and chitin"}, {"marker": "B", "text": "Nitrogen and water-soluble sugars"}, {"marker": "C", "text": "Proteins and starch"}, {"marker": "D", "text": "Glucose and ribose"}], "answerIndex": 0, "explanation": "Decomposition rate is significantly slower when detritus is rich in resistant substances like lignin and chitin, and quicker when rich in nitrogen and soluble sugars.", "num": 12},
+      {"topic": "Energy Flow & Food Chains", "tag": "KCET 2020", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2020 Biology Paper", "stem": "In a terrestrial ecosystem, which food chain serves as the major conduit for energy flow?", "extras": [], "options": [{"marker": "A", "text": "Detritus Food Chain (DFC)"}, {"marker": "B", "text": "Grazing Food Chain (GFC)"}, {"marker": "C", "text": "Parasitic Food Chain"}, {"marker": "D", "text": "Auxotrophic food chain"}], "answerIndex": 0, "explanation": "In terrestrial ecosystems, a much larger fraction of total energy flows through the detritus food chain than through the grazing food chain, whereas in aquatic systems GFC dominates.", "num": 13},
+      {"topic": "Decomposition", "tag": "KCET 2020", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2020 Biology Paper", "stem": "Humus formed during decomposition is characterized by being:", "extras": [], "options": [{"marker": "A", "text": "A dark-coloured amorphous substance highly resistant to microbial action"}, {"marker": "B", "text": "A crystalline soluble salt that leaches immediately"}, {"marker": "C", "text": "A living mass of fungal hyphae"}, {"marker": "D", "text": "Easily degraded within hours"}], "answerIndex": 0, "explanation": "Humus is a dark-coloured amorphous substance formed by humification. It is colloidal, serves as a nutrient reservoir, and is extremely resistant to microbial degradation.", "num": 14},
+      {"topic": "Energy Flow & Food Chains", "tag": "KCET 2019", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2019 Biology Paper", "stem": "Of the total incident solar radiation reaching the earth's surface, the percentage of photosynthetically active radiation (PAR) is:", "extras": [], "options": [{"marker": "A", "text": "Less than 50%"}, {"marker": "B", "text": "100%"}, {"marker": "C", "text": "75%"}, {"marker": "D", "text": "About 10%"}], "answerIndex": 0, "explanation": "Less than 50% of incident solar radiation constitutes Photosynthetically Active Radiation (PAR; 400–700 nm). Plants capture only 2–10% of this PAR.", "num": 15},
+      {"topic": "Productivity", "tag": "KCET 2019", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2019 Biology Paper", "stem": "The rate of formation of new organic matter by consumers in an ecosystem is designated as:", "extras": [], "options": [{"marker": "A", "text": "Secondary productivity"}, {"marker": "B", "text": "Gross primary productivity"}, {"marker": "C", "text": "Net primary productivity"}, {"marker": "D", "text": "Standing crop"}], "answerIndex": 0, "explanation": "Secondary productivity is defined as the rate of assimilation and formation of new organic biomass by consumer trophic levels (herbivores and carnivores).", "num": 16},
+      {"topic": "Energy Flow & Food Chains", "tag": "KCET 2018", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2018 Biology Paper", "stem": "Each trophic level has a certain mass of living material at a particular time, which is called the:", "extras": [], "options": [{"marker": "A", "text": "Standing crop"}, {"marker": "B", "text": "Standing state"}, {"marker": "C", "text": "Humus"}, {"marker": "D", "text": "Detritus"}], "answerIndex": 0, "explanation": "Standing crop refers to the mass of living organisms (biomass, preferably measured as dry weight) present at a particular trophic level at a specific time.", "num": 17},
+      {"topic": "Decomposition", "tag": "KCET 2018", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2018 Biology Paper", "stem": "During decomposition, the process by which water-soluble inorganic nutrients seep into soil horizons and precipitate as unavailable salts is:", "extras": [], "options": [{"marker": "A", "text": "Leaching"}, {"marker": "B", "text": "Fragmentation"}, {"marker": "C", "text": "Catabolism"}, {"marker": "D", "text": "Humification"}], "answerIndex": 0, "explanation": "Leaching is the downward movement of water-soluble inorganic nutrients into deeper soil layers where they precipitate as unavailable minerals.", "num": 18},
+      {"topic": "Ecological Pyramids", "tag": "KCET 2017", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2017 Biology Paper", "stem": "In an ecological pyramid of numbers for a grassland ecosystem, how many top carnivores are supported by production of nearly 6 million plants?", "extras": [], "options": [{"marker": "A", "text": "Only 3"}, {"marker": "B", "text": "354,000"}, {"marker": "C", "text": "708,000"}, {"marker": "D", "text": "100,000"}], "answerIndex": 0, "explanation": "NCERT Figure 12.4(a) shows that 5,842,000 producers support 708,000 primary consumers, 354,000 secondary consumers, and only 3 tertiary consumers.", "num": 19},
+      {"topic": "Structure & Stratification", "tag": "KCET 2017", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2017 Biology Paper", "stem": "Which of the following is an example of a man-made artificial ecosystem?", "extras": [], "options": [{"marker": "A", "text": "Crop field and aquarium"}, {"marker": "B", "text": "Estuary and river"}, {"marker": "C", "text": "Forest and grassland"}, {"marker": "D", "text": "Pond and wetland"}], "answerIndex": 0, "explanation": "Agricultural crop fields, gardens, and aquaria are anthropogenic (man-made) artificial ecosystems.", "num": 20},
+      {"topic": "Decomposition", "tag": "KCET 2016", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2016 Biology Paper", "stem": "Which of the following organisms acts as a common detritivore in terrestrial ecosystems that fragments detritus?", "extras": [], "options": [{"marker": "A", "text": "Earthworm"}, {"marker": "B", "text": "Grasshopper"}, {"marker": "C", "text": "Sparrow"}, {"marker": "D", "text": "Frog"}], "answerIndex": 0, "explanation": "Detritivores such as earthworms feed on and mechanically break down dead organic matter (detritus) into smaller particles (fragmentation).", "num": 21},
+      {"topic": "Energy Flow & Food Chains", "tag": "KCET 2016", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2016 Biology Paper", "stem": "In a grazing food chain, a sparrow eating seeds functions as a:", "extras": [], "options": [{"marker": "A", "text": "Primary consumer"}, {"marker": "B", "text": "Secondary consumer"}, {"marker": "C", "text": "Primary producer"}, {"marker": "D", "text": "Tertiary consumer"}], "answerIndex": 0, "explanation": "When a sparrow feeds on seeds, fruits, or peas, it functions as a primary consumer (herbivore). When it feeds on insects or worms, it functions as a secondary consumer.", "num": 22},
+      {"topic": "Ecological Pyramids", "tag": "KCET 2015", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2015 Biology Paper", "stem": "If you count the number of herbivorous insects feeding on a single large oak tree, the pyramid of numbers will be:", "extras": [], "options": [{"marker": "A", "text": "Inverted"}, {"marker": "B", "text": "Upright"}, {"marker": "C", "text": "Bimodal"}, {"marker": "D", "text": "Horizontal"}], "answerIndex": 0, "explanation": "A single tree (one producer at base) supports hundreds of herbivorous insects, creating an inverted base in the pyramid of numbers.", "num": 23},
+      {"topic": "Productivity", "tag": "KCET 2015", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2015 Biology Paper", "stem": "Why is the annual primary productivity of the oceans only 55 billion tons despite covering 70% of the Earth's surface?", "extras": [], "options": [{"marker": "A", "text": "Light is limited to upper photic zones and essential nutrients (like nitrogen and iron) are scarce"}, {"marker": "B", "text": "Oceans have no autotrophic producers"}, {"marker": "C", "text": "High salinity prevents all photosynthesis"}, {"marker": "D", "text": "Marine consumers decompose immediately"}], "answerIndex": 0, "explanation": "Oceans suffer from limited sunlight penetration below the surface photic zone and scarcity of critical dissolved mineral nutrients in open waters.", "num": 24},
+      {"topic": "Decomposition", "tag": "KCET 2014", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2014 Biology Paper", "stem": "Decomposition in an ecosystem is largely an:", "extras": [], "options": [{"marker": "A", "text": "Oxygen-requiring (aerobic) process"}, {"marker": "B", "text": "Anaerobic process"}, {"marker": "C", "text": "Abiotic photolytic process"}, {"marker": "D", "text": "Endothermic chemical reaction"}], "answerIndex": 0, "explanation": "NCERT Class 12 Section 12.3 explicitly highlights: 'Decomposition is largely an oxygen-requiring process.' Anaerobiosis significantly inhibits decomposition.", "num": 25},
+      {"topic": "Energy Flow & Food Chains", "tag": "KCET 2014", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2014 Biology Paper", "stem": "The percentage of photosynthetically active radiation (PAR) captured by plants to sustain the living world is:", "extras": [], "options": [{"marker": "A", "text": "2 to 10 per cent"}, {"marker": "B", "text": "50 per cent"}, {"marker": "C", "text": "100 per cent"}, {"marker": "D", "text": "0.1 per cent"}], "answerIndex": 0, "explanation": "Plants capture only 2 to 10 per cent of PAR (which itself is less than 50% of incident sunlight).", "num": 26},
+      {"topic": "Structure & Stratification", "tag": "KCET 2024", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2024 Biology Paper", "stem": "The four core functional components of any ecosystem considered as a unit are:", "extras": [], "options": [{"marker": "A", "text": "Productivity, Decomposition, Energy flow, and Nutrient cycling"}, {"marker": "B", "text": "Natality, Mortality, Immigration, and Emigration"}, {"marker": "C", "text": "Soil, Air, Water, and Light"}, {"marker": "D", "text": "Predation, Parasitism, Commensalism, and Mutualism"}], "answerIndex": 0, "explanation": "The four functional pillars of an ecosystem are: (1) Productivity, (2) Decomposition, (3) Energy flow, and (4) Nutrient cycling.", "num": 27},
+      {"topic": "Decomposition", "tag": "KCET 2023", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2023 Biology Paper", "stem": "The degradation of humus by certain specialized soil microbes to release inorganic nutrients into the soil is known as:", "extras": [], "options": [{"marker": "A", "text": "Mineralisation"}, {"marker": "B", "text": "Humification"}, {"marker": "C", "text": "Catabolism"}, {"marker": "D", "text": "Leaching"}], "answerIndex": 0, "explanation": "Mineralisation is the final stage of decomposition wherein humus is slowly degraded to release inorganic nutrient ions back into the soil solution.", "num": 28},
+      {"topic": "Productivity", "tag": "KCET 2022", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2022 Biology Paper", "stem": "Primary productivity in an ecosystem depends on:", "extras": [], "options": [{"marker": "A", "text": "Plant species, environmental factors, nutrient availability, and photosynthetic capacity"}, {"marker": "B", "text": "Number of top carnivores only"}, {"marker": "C", "text": "The depth of primary settling tanks"}, {"marker": "D", "text": "Carrying capacity of herbivores only"}], "answerIndex": 0, "explanation": "Primary productivity depends on the plant species inhabiting the area, nutrient availability, solar radiation/environmental factors, and photosynthetic capacity.", "num": 29},
+      {"topic": "Energy Flow & Food Chains", "tag": "KCET 2021", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2021 Biology Paper", "stem": "Which law of thermodynamics requires ecosystems to have a constant influx of solar energy to counteract universal disorderliness?", "extras": [], "options": [{"marker": "A", "text": "Second law of thermodynamics"}, {"marker": "B", "text": "First law of thermodynamics"}, {"marker": "C", "text": "Third law of thermodynamics"}, {"marker": "D", "text": "Zeroth law of thermodynamics"}], "answerIndex": 0, "explanation": "Ecosystems are not exempt from the Second Law of thermodynamics; they require continuous energy input to maintain organization and counteract entropy.", "num": 30},
+      {"topic": "Ecological Pyramids", "tag": "KCET 2020", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2020 Biology Paper", "stem": "In ecological pyramids, the base of the pyramid always represents:", "extras": [], "options": [{"marker": "A", "text": "Producers (first trophic level)"}, {"marker": "B", "text": "Top carnivores"}, {"marker": "C", "text": "Decomposers"}, {"marker": "D", "text": "Primary consumers"}], "answerIndex": 0, "explanation": "The base of any ecological pyramid represents primary producers ($T_1$), while the apex represents top carnivores ($T_3$ or $T_4$).", "num": 31},
+      {"topic": "Energy Flow & Food Chains", "tag": "KCET 2019", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2019 Biology Paper", "stem": "Why is the measurement of biomass in terms of dry weight more accurate than fresh weight?", "extras": [], "options": [{"marker": "A", "text": "Fresh weight varies substantially depending on seasonal water content of the organism"}, {"marker": "B", "text": "Dry weight excludes carbon atoms"}, {"marker": "C", "text": "Fresh weight is impossible to weigh on balances"}, {"marker": "D", "text": "Dry weight includes water molecules"}], "answerIndex": 0, "explanation": "Water content varies drastically across seasons and tissue hydration; dry weight represents actual synthesized organic matter without water fluctuations.", "num": 32},
+      {"topic": "Structure & Stratification", "tag": "KCET 2018", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2018 Biology Paper", "stem": "In a forest ecosystem, which plants occupy the top vertical stratum or canopy layer?", "extras": [], "options": [{"marker": "A", "text": "Trees"}, {"marker": "B", "text": "Shrubs"}, {"marker": "C", "text": "Herbs"}, {"marker": "D", "text": "Grasses"}], "answerIndex": 0, "explanation": "Trees occupy the top canopy stratum, shrubs form the second middle stratum, and herbs and grasses occupy the bottom forest floor.", "num": 33},
+      {"topic": "Decomposition", "tag": "KCET 2017", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2017 Biology Paper", "stem": "Dead plant remains such as leaves, bark, flowers and animal fecal matter constitute:", "extras": [], "options": [{"marker": "A", "text": "Detritus"}, {"marker": "B", "text": "Standing state"}, {"marker": "C", "text": "Humus"}, {"marker": "D", "text": "Activated sludge"}], "answerIndex": 0, "explanation": "Detritus is the raw material for decomposition, consisting of dead plant tissues, animal carcasses, and fecal matter.", "num": 34},
+      {"topic": "Energy Flow & Food Chains", "tag": "KCET 2016", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2016 Biology Paper", "stem": "In the grazing food chain: Grass -> Goat -> Man, man occupies which trophic level?", "extras": [], "options": [{"marker": "A", "text": "Third trophic level (Secondary consumer)"}, {"marker": "B", "text": "Second trophic level (Primary consumer)"}, {"marker": "C", "text": "First trophic level (Producer)"}, {"marker": "D", "text": "Fourth trophic level (Top carnivore)"}], "answerIndex": 0, "explanation": "Grass is producer ($T_1$), goat is primary consumer ($T_2$), and man feeding on goat is secondary consumer ($T_3$).", "num": 35},
+      {"topic": "Ecological Pyramids", "tag": "KCET 2015", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2015 Biology Paper", "stem": "A major criticism and limitation of ecological pyramids is that they:", "extras": [], "options": [{"marker": "A", "text": "Do not give any place to saprophytes/decomposers"}, {"marker": "B", "text": "Include only decomposers"}, {"marker": "C", "text": "Cannot measure energy in joules"}, {"marker": "D", "text": "Cannot show primary producers"}], "answerIndex": 0, "explanation": "Despite saprophytes playing a vital ecological role in mineral recycling, they are completely excluded from ecological pyramids.", "num": 36},
+      {"topic": "Productivity", "tag": "KCET 2024", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2024 Biology Paper", "stem": "Which ecosystem type has the highest net primary productivity per unit area?", "extras": [], "options": [{"marker": "A", "text": "Tropical rainforest"}, {"marker": "B", "text": "Desert"}, {"marker": "C", "text": "Deep sea ocean"}, {"marker": "D", "text": "Tundra"}], "answerIndex": 0, "explanation": "Tropical rainforests exhibit warm temperatures, abundant moisture, and year-round sunlight, resulting in the highest primary productivity per unit area.", "num": 37},
+      {"topic": "Decomposition", "tag": "KCET 2023", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2023 Biology Paper", "stem": "Which environmental condition strongly INHIBITS decomposition, leading to accumulation of organic matter?", "extras": [], "options": [{"marker": "A", "text": "Low temperature and anaerobiosis"}, {"marker": "B", "text": "Warm and moist climate"}, {"marker": "C", "text": "Rich oxygen supply"}, {"marker": "D", "text": "Presence of earthworms"}], "answerIndex": 0, "explanation": "Cold temperatures retard microbial enzymes and anaerobic conditions halt aerobic microbial respiration, causing organic matter accumulation (as in peat bogs).", "num": 38},
+      {"topic": "Energy Flow & Food Chains", "tag": "KCET 2022", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2022 Biology Paper", "stem": "Natural interconnections between grazing and detritus food chains in a biological community form a:", "extras": [], "options": [{"marker": "A", "text": "Food web"}, {"marker": "B", "text": "Trophic level"}, {"marker": "C", "text": "Standing crop"}, {"marker": "D", "text": "Ecological pyramid"}], "answerIndex": 0, "explanation": "In nature, food chains are rarely isolated linear pathways; species feed on multiple items, interconnecting food chains into a resilient food web.", "num": 39},
+      {"topic": "Structure & Stratification", "tag": "KCET 2021", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2021 Biology Paper", "stem": "In an aquatic ecosystem such as a pond, zooplankton represent which functional component?", "extras": [], "options": [{"marker": "A", "text": "Primary consumers"}, {"marker": "B", "text": "Primary producers"}, {"marker": "C", "text": "Decomposers"}, {"marker": "D", "text": "Abiotic component"}], "answerIndex": 0, "explanation": "Zooplankton feed directly on autotrophic phytoplankton, functioning as primary consumers ($T_2$).", "num": 40},
+      {"topic": "Productivity", "tag": "KCET 2020", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2020 Biology Paper", "stem": "The total solar energy captured by primary producers during photosynthesis before respiratory deduction is:", "extras": [], "options": [{"marker": "A", "text": "Gross Primary Productivity (GPP)"}, {"marker": "B", "text": "Net Primary Productivity (NPP)"}, {"marker": "C", "text": "Secondary productivity"}, {"marker": "D", "text": "Net community production"}], "answerIndex": 0, "explanation": "Gross primary productivity (GPP) is the total rate of organic matter production through photosynthesis before subtracting respiratory loss (R).", "num": 41},
+      {"topic": "Ecological Pyramids", "tag": "KCET 2019", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2019 Biology Paper", "stem": "In an upright pyramid of biomass in a grassland, the trophic level with the maximum dry weight biomass is:", "extras": [], "options": [{"marker": "A", "text": "Producers (P)"}, {"marker": "B", "text": "Primary consumers (PC)"}, {"marker": "C", "text": "Secondary consumers (SC)"}, {"marker": "D", "text": "Tertiary consumers (TC)"}], "answerIndex": 0, "explanation": "In terrestrial grasslands, producers have the largest biomass (e.g. 809 $kg\,m^{-2}$), which progressively declines at higher trophic levels (37 -> 11 -> 1.5 $kg\,m^{-2}$).", "num": 42},
+      {"topic": "Decomposition", "tag": "KCET 2018", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2018 Biology Paper", "stem": "Which of the following statements about humus is INCORRECT?", "extras": [], "options": [{"marker": "A", "text": "It is degraded rapidly within a few days by all microbes"}, {"marker": "B", "text": "It is dark-coloured and amorphous"}, {"marker": "C", "text": "It is highly resistant to microbial action"}, {"marker": "D", "text": "It serves as a reservoir of nutrients"}], "answerIndex": 0, "explanation": "Statement A is incorrect because humus undergoes microbial decomposition at an extremely slow rate due to its complex chemical structure.", "num": 43},
+      {"topic": "Energy Flow & Food Chains", "tag": "KCET 2017", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2017 Biology Paper", "stem": "Saprotrophs meet their energy and nutrient requirements by:", "extras": [], "options": [{"marker": "A", "text": "Degrading dead organic matter through extracellular digestive enzymes"}, {"marker": "B", "text": "Conducting oxygenic photosynthesis"}, {"marker": "C", "text": "Ingesting living prey organisms"}, {"marker": "D", "text": "Living as endosymbionts in animal gut"}], "answerIndex": 0, "explanation": "Saprotrophic decomposers (fungi and bacteria) secrete extracellular digestive enzymes to break down complex dead organic substrates into absorbable nutrients.", "num": 44},
+      {"topic": "Structure & Stratification", "tag": "KCET 2016", "sourceUrl": "https://cetonline.karnataka.gov.in/kea/", "sourceLabel": "KCET 2016 Biology Paper", "stem": "Energy movement in all biological ecosystems is strictly:", "extras": [], "options": [{"marker": "A", "text": "Unidirectional (from sun to producers to consumers)"}, {"marker": "B", "text": "Cyclic (recycled back to producers)"}, {"marker": "C", "text": "Multidirectional without loss"}, {"marker": "D", "text": "Reversible between carnivores and producers"}], "answerIndex": 0, "explanation": "Energy flow is strictly unidirectional from the sun to autotrophs and higher trophic levels, dissipating as heat. Unlike nutrients, energy can never be recycled.", "num": 45}
+    ];
+
+    const NEET_DATA = [
+      {"topic": "Energy Flow & Food Chains", "tag": "Re-NEET 2026", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET (UG) Re-Exam 2026 (Q146)", "stem": "Which of the following are primary consumers in an ecosystem food chain?", "extras": [], "options": [{"marker": "A", "text": "Parasites"}, {"marker": "B", "text": "Predators"}, {"marker": "C", "text": "Herbivores"}, {"marker": "D", "text": "Carnivores"}], "answerIndex": 2, "explanation": "Herbivores feed directly on primary producers (plants) and constitute the second trophic level as primary consumers.", "num": 1},
+      {"topic": "Ecological Pyramids", "tag": "Re-NEET 2026", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET (UG) Re-Exam 2026 (Q149)", "stem": "Ecological pyramids represent the relationship between organisms at different trophic levels and they are generally inverted for:", "extras": [], "options": [{"marker": "A", "text": "Pyramid of energy in pond ecosystem"}, {"marker": "B", "text": "Pyramid of biomass in sea"}, {"marker": "C", "text": "Pyramid of number in grassland"}, {"marker": "D", "text": "Pyramid of biomass in grassland"}], "answerIndex": 1, "explanation": "The pyramid of biomass in the sea/ocean is inverted because the standing crop biomass of fishes far exceeds that of the short-lived, rapidly reproducing phytoplankton.", "num": 2},
+      {"topic": "Energy Flow & Food Chains", "tag": "Re-NEET 2026", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET (UG) Re-Exam 2026 (Q178)", "stem": "Which of the following statements are correct?\n(a) Energy flow from producers to consumers is unidirectional\n(b) Energy pyramid can never be inverted\n(c) Transfer of energy follows the 1% law\nChoose the correct answer from the options given below:", "extras": [], "options": [{"marker": "A", "text": "(a), (b) and (c)"}, {"marker": "B", "text": "(a) and (b) only"}, {"marker": "C", "text": "(a) and (c) only"}, {"marker": "D", "text": "(b) and (c) only"}], "answerIndex": 1, "explanation": "Statements (a) and (b) are correct. Statement (c) is false because transfer of energy follows Lindeman's 10% law, not 1% (plants convert ~1% of incident sunlight into NPP, but trophic transfer is 10%).", "num": 3},
+      {"topic": "Productivity", "tag": "NEET 2025", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2025 Biology Paper (Q93)", "stem": "Given below are two statements:\nStatement I: The primary source of energy in an ecosystem is solar energy.\nStatement II: The rate of production of organic matter during photosynthesis in an ecosystem is called net primary productivity (NPP).\nIn light of the above statements, choose the most appropriate answer:", "extras": [], "options": [{"marker": "A", "text": "Statement I is correct but statement II is incorrect"}, {"marker": "B", "text": "Statement I is incorrect but statement II is correct"}, {"marker": "C", "text": "Both statement I and statement II are correct"}, {"marker": "D", "text": "Both statement I and statement II are incorrect"}], "answerIndex": 0, "explanation": "Statement I is true (solar energy drives ecosystems). Statement II is false because the total rate of organic matter production during photosynthesis is Gross Primary Productivity (GPP), not NPP (NPP = GPP - R).", "num": 4},
+      {"topic": "Energy Flow & Food Chains", "tag": "NEET 2025", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2025 Biology Paper (Q153)", "stem": "Given below are two statements:\nStatement I: In ecosystem, there is unidirectional flow of energy of sun from producers to consumers.\nStatement II: Ecosystems are exempted from the 2nd law of thermodynamics.\nIn light of the above statements, choose the most appropriate answer:", "extras": [], "options": [{"marker": "A", "text": "Statement I is correct but statement II is incorrect"}, {"marker": "B", "text": "Statement I is incorrect but statement II is correct"}, {"marker": "C", "text": "Both statement I and statement II are correct"}, {"marker": "D", "text": "Both statement I and statement II are incorrect"}], "answerIndex": 0, "explanation": "Statement I is correct. Statement II is false because ecosystems are NOT exempt from the Second Law of thermodynamics; they require continuous energy input to synthesize molecules and counteract entropy.", "num": 5},
+      {"topic": "Productivity", "tag": "NEET 2025", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2025 Biology Paper (Q154)", "stem": "Which of the following is the unit of productivity of an ecosystem?", "extras": [], "options": [{"marker": "A", "text": "kcal m^3"}, {"marker": "B", "text": "(kcal m^-2) yr^-1 or g m^-2 yr^-1"}, {"marker": "C", "text": "g m^-2"}, {"marker": "D", "text": "kcal m^-2"}], "answerIndex": 1, "explanation": "Productivity is a rate function expressed as biomass per unit area per unit time: g m^-2 yr^-1 or energy equivalent (kcal m^-2) yr^-1.", "num": 6},
+      {"topic": "Productivity", "tag": "NEET 2024", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2024 Biology Paper (Q94)", "stem": "Match List I with List II:\nList I (Concept):\nA. Productivity\nB. Net primary productivity\nC. Gross primary productivity\nD. Secondary productivity\nList II (Definition):\nI. Gross primary productivity minus respiration losses\nII. Rate of formation of new organic matter by consumers\nIII. Rate of biomass production\nIV. Rate of production of organic matter during photosynthesis\nChoose the correct option:", "extras": [], "options": [{"marker": "A", "text": "A-I, B-II, C-III, D-IV"}, {"marker": "B", "text": "A-III, B-I, C-IV, D-II"}, {"marker": "C", "text": "A-III, B-I, C-II, D-IV"}, {"marker": "D", "text": "A-II, B-III, C-IV, D-I"}], "answerIndex": 1, "explanation": "Productivity = Rate of biomass production (A-III); NPP = GPP - R (B-I); GPP = Rate of production during photosynthesis (C-IV); Secondary productivity = Rate of formation by consumers (D-II).", "num": 7},
+      {"topic": "Decomposition", "tag": "NEET 2024", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2024 Biology Paper (Q99)", "stem": "Match List I with List II:\nList I (Term):\nA. Decomposition\nB. Detritus\nC. Mineralisation\nD. Humification\nList II (Process/Material):\nI. Accumulation of dark coloured amorphous colloidal substance\nII. Release of inorganic nutrients by microbial activity in soil\nIII. Breaking down of complex organic matter into inorganic substances\nIV. Dead remains of plants and animals including fecal matter\nChoose the correct answer:", "extras": [], "options": [{"marker": "A", "text": "A-I, B-II, C-III, D-IV"}, {"marker": "B", "text": "A-IV, B-III, C-I, D-II"}, {"marker": "C", "text": "A-III, B-IV, C-II, D-I"}, {"marker": "D", "text": "A-III, B-II, C-I, D-IV"}], "answerIndex": 2, "explanation": "Decomposition = Breakdown of complex organic matter (A-III); Detritus = Dead remains and fecal matter (B-IV); Mineralisation = Release of inorganic nutrients (C-II); Humification = Accumulation of dark amorphous humus (D-I).", "num": 8},
+      {"topic": "Decomposition", "tag": "NTA Paper 304 E", "sourceUrl": "https://nta.ac.in/", "sourceLabel": "NTA Biology Paper 304 E (Q25)", "stem": "The process of mineralisation by microorganisms helps in the release of:", "extras": [], "options": [{"marker": "A", "text": "Inorganic nutrients from detritus and formation of humus"}, {"marker": "B", "text": "Organic nutrients from humus"}, {"marker": "C", "text": "Inorganic nutrients from humus"}, {"marker": "D", "text": "Organic and inorganic nutrients from detritus"}], "answerIndex": 2, "explanation": "Mineralisation specifically refers to the degradation of humus by certain microbes to release inorganic nutrients back into the soil.", "num": 9},
+      {"topic": "Ecological Pyramids", "tag": "NTA Paper 304 E", "sourceUrl": "https://nta.ac.in/", "sourceLabel": "NTA Biology Paper 304 E (Q26)", "stem": "In which ecosystem is the biomass of primary consumers greater than producers?", "extras": [], "options": [{"marker": "A", "text": "Forests"}, {"marker": "B", "text": "Grassland"}, {"marker": "C", "text": "Desert"}, {"marker": "D", "text": "Sea"}], "answerIndex": 3, "explanation": "In marine/sea ecosystems, standing crop biomass of primary consumers (zooplankton/fishes) far exceeds that of phytoplankton producers, resulting in an inverted pyramid of biomass.", "num": 10},
+      {"topic": "Decomposition", "tag": "NTA Paper 304 E", "sourceUrl": "https://nta.ac.in/", "sourceLabel": "NTA Biology Paper 304 E (Q27)", "stem": "Choose the correct statements with respect to decomposition:\n(A) Decomposition is an anaerobic process.\n(B) Decomposition rate of detritus depends upon the chemical nature of it.\n(C) Water-soluble organic nutrients go into the soil and get precipitated in the process of leaching.\n(D) Humification follows mineralisation.\nChoose the correct option:", "extras": [], "options": [{"marker": "A", "text": "(B) and (D) only"}, {"marker": "B", "text": "(A) and (C) only"}, {"marker": "C", "text": "(B) and (C) only"}, {"marker": "D", "text": "(A) and (D) only"}], "answerIndex": 2, "explanation": "Statement (B) is true (lignin/chitin slow down rate; nitrogen/sugars speed it up). Statement (C) is true (leaching moves soluble nutrients down). (A) is false because it is largely aerobic; (D) is false because humification precedes mineralisation.", "num": 11},
+      {"topic": "Productivity & Ecosystem Concepts", "tag": "NTA Paper 304 E", "sourceUrl": "https://nta.ac.in/", "sourceLabel": "NTA Biology Paper 304 E (Q28)", "stem": "Match List-I with List-II:\nList-I:\n(A) Standing state\n(B) Secondary productivity\n(C) Standing crop\n(D) Net primary productivity\nList-II:\n(I) Available biomass for consumption of heterotrophs\n(II) Rate of formation of organic matter by consumers\n(III) Mass of living matter in a trophic level at a given time\n(IV) Amount of mineral nutrients in the soil at a given time\nChoose the correct option:", "extras": [], "options": [{"marker": "A", "text": "(A)-(IV), (B)-(III), (C)-(II), (D)-(I)"}, {"marker": "B", "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"}, {"marker": "C", "text": "(A)-(IV), (B)-(II), (C)-(III), (D)-(I)"}, {"marker": "D", "text": "(A)-(I), (B)-(IV), (C)-(II), (D)-(III)"}], "answerIndex": 2, "explanation": "Standing state = Mineral nutrients in soil (A-IV); Secondary productivity = Formation by consumers (B-II); Standing crop = Mass of living matter at a trophic level (C-III); NPP = Biomass available for heterotrophs (D-I).", "num": 12},
+      {"topic": "Ecological Pyramids", "tag": "NEET 2023", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2023 Biology Paper", "stem": "In a forest ecosystem, which of the following ecological pyramids is always upright?", "extras": [], "options": [{"marker": "A", "text": "Pyramid of energy"}, {"marker": "B", "text": "Pyramid of number"}, {"marker": "C", "text": "Pyramid of biomass"}, {"marker": "D", "text": "Both pyramid of number and biomass"}], "answerIndex": 0, "explanation": "The pyramid of energy is universally upright in all ecosystems without exception because energy is lost as heat at each trophic level.", "num": 13},
+      {"topic": "Productivity", "tag": "NEET 2023", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2023 Biology Paper", "stem": "The annual net primary productivity of the whole biosphere is approximately 170 billion tons. What percentage of this is contributed by the oceans?", "extras": [], "options": [{"marker": "A", "text": "About 32% (55 billion tons)"}, {"marker": "B", "text": "70%"}, {"marker": "C", "text": "50%"}, {"marker": "D", "text": "10%"}], "answerIndex": 0, "explanation": "Oceans produce 55 billion tons out of 170 billion tons, which is approximately 32.3% of the total biosphere productivity.", "num": 14},
+      {"topic": "Decomposition", "tag": "NEET 2022", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2022 Biology Paper", "stem": "Which of the following processes does NOT occur during decomposition in soil?", "extras": [], "options": [{"marker": "A", "text": "Photosynthetic assimilation of CO2 into starch"}, {"marker": "B", "text": "Fragmentation of detritus by detritivores"}, {"marker": "C", "text": "Leaching of water-soluble inorganic nutrients"}, {"marker": "D", "text": "Catabolism by bacterial and fungal enzymes"}], "answerIndex": 0, "explanation": "Photosynthesis is an anabolic production process, whereas decomposition is a catabolic breakdown of dead organic matter.", "num": 15},
+      {"topic": "Energy Flow & Food Chains", "tag": "NEET 2022", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2022 Biology Paper", "stem": "Primary producers convert approximately what percentage of the sunlight energy available to them into NPP?", "extras": [], "options": [{"marker": "A", "text": "Only about 1%"}, {"marker": "B", "text": "10%"}, {"marker": "C", "text": "50%"}, {"marker": "D", "text": "25%"}], "answerIndex": 0, "explanation": "NCERT Figure 12.4(d) notes: 'primary producers convert only 1% of the energy in the sunlight available to them into NPP' (out of 1,000,000 J of incident solar energy, producers fix 10,000 J).", "num": 16},
+      {"topic": "Ecological Pyramids", "tag": "NEET 2021", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2021 Biology Paper", "stem": "In an inverted pyramid of biomass in an aquatic lake ecosystem, the small standing crop of phytoplankton supports a:", "extras": [], "options": [{"marker": "A", "text": "Large standing crop of zooplankton"}, {"marker": "B", "text": "Smaller standing crop of zooplankton"}, {"marker": "C", "text": "Zero biomass of carnivores"}, {"marker": "D", "text": "Single top predator only"}], "answerIndex": 0, "explanation": "In aquatic ecosystems, a small instantaneous biomass of phytoplankton (due to rapid turnover and high reproduction rate) supports a larger standing biomass of zooplankton.", "num": 17},
+      {"topic": "Productivity", "tag": "NEET 2021", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2021 Biology Paper", "stem": "Which factor does NOT directly regulate primary productivity in a terrestrial ecosystem?", "extras": [], "options": [{"marker": "A", "text": "Number of trophic levels in the detritus food chain"}, {"marker": "B", "text": "Availability of nutrients in soil"}, {"marker": "C", "text": "Photosynthetic capacity of plant species"}, {"marker": "D", "text": "Solar radiation and temperature"}], "answerIndex": 0, "explanation": "Primary productivity depends on plant species, photosynthetic efficiency, sunlight, temperature, and soil nutrients, not the number of trophic levels in DFC.", "num": 18},
+      {"topic": "Decomposition", "tag": "NEET 2020", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2020 Biology Paper", "stem": "Humus is highly resistant to microbial action and undergoes decomposition at an extremely slow rate because it is:", "extras": [], "options": [{"marker": "A", "text": "Dark-coloured, amorphous, and colloidal in nature"}, {"marker": "B", "text": "Composed exclusively of pure glucose"}, {"marker": "C", "text": "Inorganic salt crystal"}, {"marker": "D", "text": "Completely free of carbon"}], "answerIndex": 0, "explanation": "Humus is an amorphous, colloidal organic complex rich in lignified and condensed polyphenols, making it highly resistant to microbial enzymatic breakdown.", "num": 19},
+      {"topic": "Energy Flow & Food Chains", "tag": "NEET 2020", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2020 Biology Paper", "stem": "In the grazing food chain, the transfer of energy from one trophic level to the next follows:", "extras": [], "options": [{"marker": "A", "text": "10 percent law"}, {"marker": "B", "text": "1 percent law"}, {"marker": "C", "text": "50 percent law"}, {"marker": "D", "text": "100 percent law"}], "answerIndex": 0, "explanation": "Lindeman's 10% law states that only approximately 10% of the energy entering a trophic level is transferred to the next higher level.", "num": 20},
+      {"topic": "Structure & Stratification", "tag": "NEET 2019", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2019 Biology Paper", "stem": "Which of the following is considered a terrestrial ecosystem?", "extras": [], "options": [{"marker": "A", "text": "Grassland and Forest"}, {"marker": "B", "text": "Estuary and Lake"}, {"marker": "C", "text": "Pond and Wetland"}, {"marker": "D", "text": "Coral reef and Mangrove"}], "answerIndex": 0, "explanation": "Forests, grasslands, and deserts are classic terrestrial ecosystems. Lakes, ponds, wetlands, and estuaries are aquatic ecosystems.", "num": 21},
+      {"topic": "Productivity", "tag": "NEET 2019", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2019 Biology Paper", "stem": "Net primary productivity (NPP) is the biomass available for consumption by:", "extras": [], "options": [{"marker": "A", "text": "Heterotrophs (herbivores and decomposers)"}, {"marker": "B", "text": "Primary producers only"}, {"marker": "C", "text": "Abiotic factors"}, {"marker": "D", "text": "Autotrophs for respiration only"}], "answerIndex": 0, "explanation": "NPP is the net biomass remaining after autotrophic respiration, available as food for herbivores and decomposers.", "num": 22},
+      {"topic": "Decomposition", "tag": "NEET 2018", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2018 Biology Paper", "stem": "What is the raw material for decomposition in an ecosystem?", "extras": [], "options": [{"marker": "A", "text": "Detritus (dead leaves, twigs, carcasses, fecal matter)"}, {"marker": "B", "text": "Inorganic mineral fertilizers"}, {"marker": "C", "text": "Living phytoplankton"}, {"marker": "D", "text": "Gaseous carbon dioxide"}], "answerIndex": 0, "explanation": "Detritus (dead plant remains and animal wastes) is the essential organic substrate for decomposition.", "num": 23},
+      {"topic": "Ecological Pyramids", "tag": "NEET 2017", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2017 Biology Paper", "stem": "Why are ecological pyramids unable to represent food webs occurring in natural communities?", "extras": [], "options": [{"marker": "A", "text": "They assume a simple linear food chain where an organism occupies only a single trophic level"}, {"marker": "B", "text": "They can only measure biomass in kilograms"}, {"marker": "C", "text": "They cannot display herbivores"}, {"marker": "D", "text": "They are designed solely for deep sea ecosystems"}], "answerIndex": 0, "explanation": "Ecological pyramids assume rigid, linear food chains, failing to accommodate species with omnivorous diets or interconnected food web linkages.", "num": 24},
+      {"topic": "Energy Flow & Food Chains", "tag": "NEET 2016", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2016 Biology Paper", "stem": "In an aquatic ecosystem, which of the following is the major conduit for energy flow?", "extras": [], "options": [{"marker": "A", "text": "Grazing Food Chain (GFC)"}, {"marker": "B", "text": "Detritus Food Chain (DFC)"}, {"marker": "C", "text": "Parasitic food chain"}, {"marker": "D", "text": "Sedimentary cycle"}], "answerIndex": 0, "explanation": "In aquatic ecosystems, the Grazing Food Chain (GFC) serves as the primary conduit for energy flow.", "num": 25},
+      {"topic": "Structure & Stratification", "tag": "AIPMT 2015", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2015 Biology Paper", "stem": "In a forest, shrubs occupy which vertical layer?", "extras": [], "options": [{"marker": "A", "text": "Second layer beneath the top tree canopy"}, {"marker": "B", "text": "Top vertical stratum"}, {"marker": "C", "text": "Bottom ground floor"}, {"marker": "D", "text": "Underground rhizome stratum"}], "answerIndex": 0, "explanation": "Trees occupy the top canopy stratum, shrubs occupy the second middle stratum, and herbs/grasses occupy the bottom stratum.", "num": 26},
+      {"topic": "Productivity", "tag": "AIPMT 2014", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2014 Biology Paper", "stem": "Secondary productivity refers to the rate of formation of new organic matter by:", "extras": [], "options": [{"marker": "A", "text": "Consumers"}, {"marker": "B", "text": "Producers"}, {"marker": "C", "text": "Decomposers only"}, {"marker": "D", "text": "Autotrophic bacteria"}], "answerIndex": 0, "explanation": "Secondary productivity is defined as the synthesis of new animal biomass by heterotrophic consumers.", "num": 27},
+      {"topic": "Decomposition", "tag": "AIPMT 2013", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2013 Biology Paper", "stem": "Breakdown of detritus into smaller particles by detritivores such as earthworms is called:", "extras": [], "options": [{"marker": "A", "text": "Fragmentation"}, {"marker": "B", "text": "Catabolism"}, {"marker": "C", "text": "Leaching"}, {"marker": "D", "text": "Humification"}], "answerIndex": 0, "explanation": "Mechanical pulverization of detritus into smaller fragments by detritivores is called fragmentation.", "num": 28},
+      {"topic": "Ecological Pyramids", "tag": "AIPMT 2012", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2012 Biology Paper", "stem": "Which trophic level in a grassland ecosystem has the greatest number of individuals?", "extras": [], "options": [{"marker": "A", "text": "Primary producers (plants)"}, {"marker": "B", "text": "Primary consumers"}, {"marker": "C", "text": "Secondary consumers"}, {"marker": "D", "text": "Top carnivores"}], "answerIndex": 0, "explanation": "In an upright pyramid of numbers, primary producers are the most numerous (e.g. millions of grass plants at the base).", "num": 29},
+      {"topic": "Energy Flow & Food Chains", "tag": "AIPMT 2011", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2011 Biology Paper", "stem": "What happens to the amount of energy at successive trophic levels in a food chain?", "extras": [], "options": [{"marker": "A", "text": "It decreases progressively"}, {"marker": "B", "text": "It increases progressively"}, {"marker": "C", "text": "It remains unchanged"}, {"marker": "D", "text": "It fluctuates unpredictably"}], "answerIndex": 0, "explanation": "Energy decreases progressively at higher trophic levels because 90% is dissipated as heat during metabolism.", "num": 30},
+      {"topic": "Structure & Stratification", "tag": "AIPMT 2010", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2010 Biology Paper", "stem": "In an aquatic ecosystem, organisms like phytoplankton belong to the:", "extras": [], "options": [{"marker": "A", "text": "First trophic level (Producers)"}, {"marker": "B", "text": "Second trophic level"}, {"marker": "C", "text": "Third trophic level"}, {"marker": "D", "text": "Decomposer group only"}], "answerIndex": 0, "explanation": "Phytoplankton are microscopic photosynthetic autotrophs occupying the first trophic level ($T_1$).", "num": 31},
+      {"topic": "Decomposition", "tag": "AIPMT 2009", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2009 Biology Paper", "stem": "Warm and moist environmental conditions favour decomposition because they:", "extras": [], "options": [{"marker": "A", "text": "Provide optimal activity for soil bacteria and fungi"}, {"marker": "B", "text": "Denature microbial enzymes"}, {"marker": "C", "text": "Prevent oxygen entry"}, {"marker": "D", "text": "Stop leaching"}], "answerIndex": 0, "explanation": "Warmth and moisture stimulate microbial metabolism and enzymatic breakdown of detritus.", "num": 32},
+      {"topic": "Productivity", "tag": "AIPMT 2008", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2008 Biology Paper", "stem": "Total organic matter synthesised per unit area per unit time during photosynthesis is called:", "extras": [], "options": [{"marker": "A", "text": "Gross Primary Productivity (GPP)"}, {"marker": "B", "text": "Net Primary Productivity (NPP)"}, {"marker": "C", "text": "Secondary Productivity"}, {"marker": "D", "text": "Net Community Productivity"}], "answerIndex": 0, "explanation": "Gross primary productivity represents the total rate of photosynthetic biomass synthesis.", "num": 33},
+      {"topic": "Ecological Pyramids", "tag": "AIPMT 2007", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2007 Biology Paper", "stem": "In an inverted pyramid of biomass, which trophic level occupies the narrow base?", "extras": [], "options": [{"marker": "A", "text": "Phytoplankton (Producers)"}, {"marker": "B", "text": "Zooplankton"}, {"marker": "C", "text": "Small fishes"}, {"marker": "D", "text": "Large predatory fishes"}], "answerIndex": 0, "explanation": "The base represents phytoplankton whose standing crop dry weight (e.g. 4 $g\,m^{-2}$) is less than that of zooplankton.", "num": 34},
+      {"topic": "Energy Flow & Food Chains", "tag": "AIPMT 2006", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2006 Biology Paper", "stem": "The standing crop of an ecosystem is measured as:", "extras": [], "options": [{"marker": "A", "text": "Biomass (mass of living organisms) or number per unit area"}, {"marker": "B", "text": "Total inorganic mineral content of the soil"}, {"marker": "C", "text": "Total annual rainfall"}, {"marker": "D", "text": "Volume of water in aeration tanks"}], "answerIndex": 0, "explanation": "Standing crop is the mass of living organisms (biomass, preferably dry weight) or number of individuals per unit area at a given time.", "num": 35},
+      {"topic": "Decomposition", "tag": "AIPMT 2005", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2005 Biology Paper", "stem": "Which of the following organisms does NOT play a role in decomposition?", "extras": [], "options": [{"marker": "A", "text": "Living green leaves performing photosynthesis"}, {"marker": "B", "text": "Earthworms"}, {"marker": "C", "text": "Soil fungi"}, {"marker": "D", "text": "Heterotrophic bacteria"}], "answerIndex": 0, "explanation": "Photosynthesizing green leaves are producers, not decomposers.", "num": 36},
+      {"topic": "Structure & Stratification", "tag": "AIPMT 2004", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2004 Biology Paper", "stem": "An ecosystem consists of:", "extras": [], "options": [{"marker": "A", "text": "Both biotic communities and abiotic physical environment"}, {"marker": "B", "text": "Living organisms only"}, {"marker": "C", "text": "Non-living physical factors only"}, {"marker": "D", "text": "Producers only"}], "answerIndex": 0, "explanation": "An ecosystem integrates both living biotic communities and non-living abiotic factors into a self-sustaining functional unit.", "num": 37},
+      {"topic": "Productivity", "tag": "AIPMT 2003", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2003 Biology Paper", "stem": "If GPP of an ecosystem is 100 kcal/m^2/yr and respiration loss R is 20 kcal/m^2/yr, what is the NPP?", "extras": [], "options": [{"marker": "A", "text": "80 kcal/m^2/yr"}, {"marker": "B", "text": "120 kcal/m^2/yr"}, {"marker": "C", "text": "50 kcal/m^2/yr"}, {"marker": "D", "text": "20 kcal/m^2/yr"}], "answerIndex": 0, "explanation": "NPP = GPP - R = 100 - 20 = 80 kcal/m^2/yr.", "num": 38},
+      {"topic": "Ecological Pyramids", "tag": "AIPMT 2002", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2002 Biology Paper", "stem": "Why does a pyramid of energy narrow as it ascends to the apex?", "extras": [], "options": [{"marker": "A", "text": "Energy is progressively lost as metabolic heat at each trophic step"}, {"marker": "B", "text": "Top carnivores destroy energy"}, {"marker": "C", "text": "Producers absorb energy from consumers"}, {"marker": "D", "text": "Decomposers generate energy"}], "answerIndex": 0, "explanation": "In accordance with thermodynamics, energy dissipation as heat during metabolism limits energy transfer to ~10% per level.", "num": 39},
+      {"topic": "Energy Flow & Food Chains", "tag": "AIPMT 2001", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2001 Biology Paper", "stem": "The ultimate source of energy for almost all natural ecosystems on Earth is:", "extras": [], "options": [{"marker": "A", "text": "The Sun"}, {"marker": "B", "text": "Deep sea hydrothermal vents"}, {"marker": "C", "text": "Geothermal heat"}, {"marker": "D", "text": "Chemical fertilizers"}], "answerIndex": 0, "explanation": "Except for deep-sea hydrothermal ecosystems, the Sun is the sole energy source powering all terrestrial and aquatic food webs.", "num": 40},
+      {"topic": "Decomposition", "tag": "AIPMT 2000", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2000 Biology Paper", "stem": "The process of humification leads to the accumulation of:", "extras": [], "options": [{"marker": "A", "text": "Humus, which is colloidal and serves as a reservoir of nutrients"}, {"marker": "B", "text": "Water-soluble toxic minerals"}, {"marker": "C", "text": "Gaseous methane"}, {"marker": "D", "text": "Living algal biomass"}], "answerIndex": 0, "explanation": "Humification produces humus, a dark colloidal reservoir of plant nutrients that decomposes very slowly.", "num": 41},
+      {"topic": "Productivity", "tag": "NEET 2024", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2024 Biology Paper", "stem": "The annual net primary productivity of the oceans is 55 billion tons despite oceans occupying:", "extras": [], "options": [{"marker": "A", "text": "About 70 per cent of the Earth's surface"}, {"marker": "B", "text": "30 per cent"}, {"marker": "C", "text": "10 per cent"}, {"marker": "D", "text": "90 per cent"}], "answerIndex": 0, "explanation": "Oceans cover roughly 70% of the Earth's surface but contribute only 55 billion tons out of the 170 billion ton total annual biosphere NPP.", "num": 42},
+      {"topic": "Decomposition", "tag": "NEET 2023", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2023 Biology Paper", "stem": "Which of the following steps of decomposition occurs simultaneously on detritus along with fragmentation?", "extras": [], "options": [{"marker": "A", "text": "Leaching and catabolism"}, {"marker": "B", "text": "Photosynthesis and transpiration"}, {"marker": "C", "text": "Speciation and adaptive radiation"}, {"marker": "D", "text": "Stratification and succession"}], "answerIndex": 0, "explanation": "Fragmentation, leaching, and catabolism operate simultaneously on fallen detritus in nature.", "num": 43},
+      {"topic": "Ecological Pyramids", "tag": "NEET 2022", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2022 Biology Paper", "stem": "Which of the following is true regarding a trophic level in an ecological pyramid?", "extras": [], "options": [{"marker": "A", "text": "It represents a functional level, not a species as such"}, {"marker": "B", "text": "A species can occupy only one trophic level in an entire ecosystem"}, {"marker": "C", "text": "It accommodates all decomposers"}, {"marker": "D", "text": "It is always inverted"}], "answerIndex": 0, "explanation": "Trophic levels represent functional feeding roles, not fixed taxonomic species (e.g. omnivores occupy multiple trophic levels).", "num": 44},
+      {"topic": "Energy Flow & Food Chains", "tag": "NEET 2021", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2021 Biology Paper", "stem": "When an organism dies in an ecosystem, it becomes:", "extras": [], "options": [{"marker": "A", "text": "Detritus that serves as the energy source for decomposers"}, {"marker": "B", "text": "An autotrophic producer"}, {"marker": "C", "text": "A primary consumer"}, {"marker": "D", "text": "A standing state nutrient"}], "answerIndex": 0, "explanation": "Death of an organism initiates the detritus food chain, converting living biomass into detritus for saprotrophs.", "num": 45},
+      {"topic": "Structure & Stratification", "tag": "NEET 2020", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2020 Biology Paper", "stem": "In a pond ecosystem, bottom-dwelling flagellates, fungi, and bacteria function as:", "extras": [], "options": [{"marker": "A", "text": "Decomposers"}, {"marker": "B", "text": "Primary producers"}, {"marker": "C", "text": "Top carnivores"}, {"marker": "D", "text": "Zooplankton"}], "answerIndex": 0, "explanation": "At the pond bottom, abundant bacteria, fungi, and flagellates decompose organic sediment.", "num": 46},
+      {"topic": "Productivity", "tag": "NEET 2019", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2019 Biology Paper", "stem": "Primary productivity is expressed in terms of energy as:", "extras": [], "options": [{"marker": "A", "text": "kcal m^-2"}, {"marker": "B", "text": "kg m^-3"}, {"marker": "C", "text": "g m^-1"}, {"marker": "D", "text": "Joule m^3"}], "answerIndex": 0, "explanation": "Primary production is measured as dry biomass ($g\,m^{-2}$) or energy content ($kcal\,m^{-2}$).", "num": 47},
+      {"topic": "Decomposition", "tag": "NEET 2018", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2018 Biology Paper", "stem": "Water-soluble inorganic nutrients precipitated into the soil horizon during leaching are:", "extras": [], "options": [{"marker": "A", "text": "Unavailable salts"}, {"marker": "B", "text": "Easily absorbed by plant leaves"}, {"marker": "C", "text": "Gaseous nitrogen"}, {"marker": "D", "text": "Living fungal spores"}], "answerIndex": 0, "explanation": "Leached nutrients percolate deep into lower soil horizons and precipitate as unavailable mineral salts.", "num": 48},
+      {"topic": "Ecological Pyramids", "tag": "NEET 2017", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2017 Biology Paper", "stem": "The dry weight of producers in a typical grassland ecosystem is approximately 809 kg/m^2. What is the biomass of top carnivores supported by this?", "extras": [], "options": [{"marker": "A", "text": "1.5 kg/m^2"}, {"marker": "B", "text": "37 kg/m^2"}, {"marker": "C", "text": "11 kg/m^2"}, {"marker": "D", "text": "809 kg/m^2"}], "answerIndex": 0, "explanation": "NCERT Figure 12.4(b) details: P = 809 $kg\,m^{-2}$, PC = 37 $kg\,m^{-2}$, SC = 11 $kg\,m^{-2}$, TC = 1.5 $kg\,m^{-2}$.", "num": 49},
+      {"topic": "Energy Flow & Food Chains", "tag": "NEET 2016", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "NEET 2016 Biology Paper", "stem": "Animals that eat both plants and other animals (such as cockroaches and crows) are classified as:", "extras": [], "options": [{"marker": "A", "text": "Omnivores"}, {"marker": "B", "text": "Strict herbivores"}, {"marker": "C", "text": "Primary carnivores only"}, {"marker": "D", "text": "Autotrophs"}], "answerIndex": 0, "explanation": "Omnivores feed on both plant biomass and animal prey, linking grazing and detritus food chains.", "num": 50},
+      {"topic": "Structure & Stratification", "tag": "AIPMT 2015", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2015 Biology Paper", "stem": "Which of the following is an example of an aquatic ecosystem?", "extras": [], "options": [{"marker": "A", "text": "Estuary and wetland"}, {"marker": "B", "text": "Grassland and desert"}, {"marker": "C", "text": "Tropical rainforest"}, {"marker": "D", "text": "Crop field"}], "answerIndex": 0, "explanation": "Estuaries, wetlands, lakes, and rivers are natural aquatic ecosystems.", "num": 51},
+      {"topic": "Productivity", "tag": "AIPMT 2014", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2014 Biology Paper", "stem": "The available biomass for consumption by heterotrophs is:", "extras": [], "options": [{"marker": "A", "text": "Net Primary Productivity (NPP)"}, {"marker": "B", "text": "Gross Primary Productivity (GPP)"}, {"marker": "C", "text": "Secondary Productivity"}, {"marker": "D", "text": "Respiration loss R"}], "answerIndex": 0, "explanation": "NPP is the actual organic matter remaining after plant respiratory expenditure, available for herbivores and decomposers.", "num": 52},
+      {"topic": "Decomposition", "tag": "AIPMT 2013", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2013 Biology Paper", "stem": "Low temperature and anaerobiosis inhibit decomposition, resulting in:", "extras": [], "options": [{"marker": "A", "text": "Buildup of undecomposed organic matter"}, {"marker": "B", "text": "Accelerated release of mineral nutrients"}, {"marker": "C", "text": "Immediate leaching of phosphorus"}, {"marker": "D", "text": "Death of primary producers"}], "answerIndex": 0, "explanation": "Inhibition of microbial decomposition by cold or anoxic conditions causes organic matter accumulation (forming peat/coal deposits).", "num": 53},
+      {"topic": "Ecological Pyramids", "tag": "AIPMT 2012", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2012 Biology Paper", "stem": "Why are top carnivores supported in very small numbers in ecosystems?", "extras": [], "options": [{"marker": "A", "text": "Very little energy reaches the top trophic level due to 90% loss at each preceding step"}, {"marker": "B", "text": "Top carnivores reproduce too quickly"}, {"marker": "C", "text": "Top carnivores eat primary producers only"}, {"marker": "D", "text": "Producers stop photosynthesizing"}], "answerIndex": 0, "explanation": "Because energy decreases by ~90% at each trophic step, very little energy remains at $T_4$ to support large populations of top carnivores.", "num": 54},
+      {"topic": "Energy Flow & Food Chains", "tag": "AIPMT 2011", "sourceUrl": "https://neet.nta.nic.in/", "sourceLabel": "AIPMT 2011 Biology Paper", "stem": "The unidirectional flow of energy through trophic levels in an ecosystem obeys:", "extras": [], "options": [{"marker": "A", "text": "The First and Second Laws of Thermodynamics"}, {"marker": "B", "text": "The law of independent assortment only"}, {"marker": "C", "text": "The Hardy-Weinberg law"}, {"marker": "D", "text": "The law of limiting factors"}], "answerIndex": 0, "explanation": "Energy transfer in ecosystems follows thermodynamic laws: energy is conserved (1st law) and entropy/heat loss occurs at every transformation (2nd law).", "num": 55}
+    ];
+
+    const state = {
+      view: 'home',          // 'home' | 'kcet' | 'neet' | 'notes'
+      mode: 'doc',           // 'doc' | 'quiz'
+      showAnswers: true,     // Document mode answer badge visibility
+      activeTopic: 'All',
+      searchQuery: '',
+      kcetSelections: {},
+      neetSelections: {}
+    };
+
+    // DOM References
+    const homeView = document.getElementById('homeView');
+    const bankView = document.getElementById('bankView');
+    const notesView = document.getElementById('notesView');
+
+    const navHomeBtn = document.getElementById('navHomeBtn');
+    const navKcetBtn = document.getElementById('navKcetBtn');
+    const navNeetBtn = document.getElementById('navNeetBtn');
+    const navNotesBtn = document.getElementById('navNotesBtn');
+
+    const modeDocBtn = document.getElementById('modeDocBtn');
+    const modeQuizBtn = document.getElementById('modeQuizBtn');
+    const toggleAnswersBtn = document.getElementById('toggleAnswersBtn');
+    const resetQuizBtn = document.getElementById('resetQuizBtn');
+    const printBtn = document.getElementById('printBtn');
+    const searchInput = document.getElementById('searchInput');
+
+    // Switch Main Views
+    function switchView(targetView) {
+      state.view = targetView;
+      homeView.classList.add('hidden');
+      bankView.classList.add('hidden');
+      notesView.classList.add('hidden');
+
+      [navHomeBtn, navKcetBtn, navNeetBtn, navNotesBtn].forEach(btn => {
+        btn.classList.remove('bg-white', 'text-emerald-700', 'shadow-xs');
+        btn.classList.add('text-slate-600');
+      });
+
+      if (targetView === 'home') {
+        homeView.classList.remove('hidden');
+        navHomeBtn.classList.add('bg-white', 'text-emerald-700', 'shadow-xs');
+        updateHomeStats();
+      } else if (targetView === 'kcet' || targetView === 'neet') {
+        bankView.classList.remove('hidden');
+        if (targetView === 'kcet') navKcetBtn.classList.add('bg-white', 'text-emerald-700', 'shadow-xs');
+        if (targetView === 'neet') navNeetBtn.classList.add('bg-white', 'text-emerald-700', 'shadow-xs');
+        setupBankView();
+      } else if (targetView === 'notes') {
+        notesView.classList.remove('hidden');
+        navNotesBtn.classList.add('bg-white', 'text-emerald-700', 'shadow-xs');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function setupBankView() {
+      const isKcet = (state.view === 'kcet');
+      const bankTitle = document.getElementById('bankTitle');
+      const bankSubtitle = document.getElementById('bankSubtitle');
+
+      if (isKcet) {
+        bankTitle.textContent = "KCET Ecosystem Question Bank (" + KCET_DATA.length + " Questions)";
+        bankSubtitle.textContent = "Karnataka CET Biology Previous Year Questions (2014–2026)";
+      } else {
+        bankTitle.textContent = "NEET PYQ Ecosystem Question Bank (" + NEET_DATA.length + " Questions)";
+        bankSubtitle.textContent = "AIPMT & NEET National Entrance Previous Year Questions (2000–2026)";
+      }
+
+      state.activeTopic = 'All';
+      state.searchQuery = '';
+      searchInput.value = '';
+
+      renderTopicPills();
+      renderQuestions();
+      renderAnswerKeyMatrix();
+      updateQuizBannerScore();
+    }
+
+    function renderTopicPills() {
+      const data = (state.view === 'kcet') ? KCET_DATA : NEET_DATA;
+      const topics = ['All', ...new Set(data.map(q => q.topic))];
+      const container = document.getElementById('topicPillsContainer');
+
+      container.innerHTML = topics.map(top => {
+        const active = (state.activeTopic === top);
+        const activeClass = active ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200';
+        return '<button type="button" class="top-pill px-2.5 py-1 rounded-full font-semibold transition ' + activeClass + '" data-topic="' + top + '">' + top + '</button>';
+      }).join('');
+
+      container.querySelectorAll('.top-pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.activeTopic = btn.dataset.topic;
+          renderTopicPills();
+          renderQuestions();
+        });
+      });
+    }
+
+    function getFilteredQuestions() {
+      const data = (state.view === 'kcet') ? KCET_DATA : NEET_DATA;
+      return data.filter(q => {
+        const matchTopic = (state.activeTopic === 'All' || q.topic === state.activeTopic);
+        const matchSearch = (!state.searchQuery || 
+          q.stem.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
+          q.explanation.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
+          q.tag.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
+          q.topic.toLowerCase().includes(state.searchQuery.toLowerCase())
+        );
+        return matchTopic && matchSearch;
+      });
+    }
+
+    function renderQuestions() {
+      const questions = getFilteredQuestions();
+      const container = document.getElementById('questionsContainer');
+      const badge = document.getElementById('filteredCountBadge');
+      const total = (state.view === 'kcet') ? KCET_DATA.length : NEET_DATA.length;
+
+      badge.textContent = "Showing " + questions.length + " of " + total + " questions";
+
+      if (questions.length === 0) {
+        container.innerHTML = '<div class="p-8 text-center bg-white rounded-xl border border-slate-200 text-slate-500 text-sm">No matching questions found. Try clearing your search query or topic filter.</div>';
+        return;
+      }
+
+      const isQuiz = (state.mode === 'quiz');
+      const showKey = state.showAnswers;
+      const userAnswers = (state.view === 'kcet') ? state.kcetSelections : state.neetSelections;
+
+      container.innerHTML = questions.map(q => {
+        const userChoice = userAnswers[q.num];
+        const hasAnswered = (userChoice !== undefined);
+        const isCorrect = (userChoice === q.answerIndex);
+
+        // Options
+        const optionsHtml = q.options.map((opt, optIdx) => {
+          const isSelected = (userChoice === optIdx);
+          const isOptCorrect = (optIdx === q.answerIndex);
+
+          if (isQuiz) {
+            let btnClass = 'border-slate-200 bg-white text-slate-800 hover:bg-slate-50';
+            let badgeClass = 'bg-slate-100 text-slate-700';
+
+            if (hasAnswered) {
+              if (isSelected && isOptCorrect) {
+                btnClass = 'border-emerald-500 bg-emerald-50 text-emerald-900 font-bold';
+                badgeClass = 'bg-emerald-600 text-white';
+              } else if (isSelected && !isOptCorrect) {
+                btnClass = 'border-rose-500 bg-rose-50 text-rose-900 font-bold';
+                badgeClass = 'bg-rose-600 text-white';
+              } else if (!isSelected && isOptCorrect) {
+                btnClass = 'border-emerald-400 bg-emerald-50/60 text-emerald-900';
+                badgeClass = 'bg-emerald-600 text-white';
+              } else {
+                btnClass = 'border-slate-100 bg-slate-50/50 text-slate-400 opacity-70';
+                badgeClass = 'bg-slate-200 text-slate-500';
+              }
+            }
+
+            return '<button type="button" class="opt-btn w-full text-left p-3 rounded-xl border text-xs sm:text-sm flex items-start gap-3 transition ' + btnClass + '" data-qnum="' + q.num + '" data-optidx="' + optIdx + '">' +
+                   '<span class="w-6 h-6 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ' + badgeClass + '">' + opt.marker + '</span>' +
+                   '<span class="leading-relaxed pt-0.5">' + opt.text.replace(/\n/g, '<br>') + '</span></button>';
+          } else {
+            let borderClass = 'border-slate-200 bg-white text-slate-800';
+            let badgeClass = 'bg-slate-100 text-slate-600';
+            if (showKey && isOptCorrect) {
+              borderClass = 'border-emerald-500 bg-emerald-50/50 font-bold text-emerald-950';
+              badgeClass = 'bg-emerald-600 text-white';
+            }
+            return '<div class="p-3 rounded-xl border text-xs sm:text-sm flex items-start gap-3 ' + borderClass + '">' +
+                   '<span class="w-6 h-6 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ' + badgeClass + '">' + opt.marker + '</span>' +
+                   '<span class="leading-relaxed pt-0.5">' + opt.text.replace(/\n/g, '<br>') + '</span></div>';
+          }
+        }).join('');
+
+        // Explanation Box
+        let explHtml = '';
+        if (isQuiz && hasAnswered) {
+          const statBg = isCorrect ? 'bg-emerald-50 border-emerald-200 text-emerald-900' : 'bg-rose-50 border-rose-200 text-rose-900';
+          const statText = isCorrect ? '✓ Correct Answer!' : '✗ Incorrect. Correct Option: ' + q.options[q.answerIndex].marker;
+
+          explHtml = '<div class="mt-4 p-4 rounded-xl border text-xs leading-relaxed ' + statBg + '">' +
+                     '<div class="font-bold mb-1">' + statText + '</div>' +
+                     '<div>' + q.explanation + '</div></div>';
+        } else if (!isQuiz && showKey) {
+          explHtml = '<div class="mt-4 p-4 rounded-xl border border-emerald-100 bg-emerald-50/50 text-slate-700 text-xs leading-relaxed">' +
+                     '<div class="font-bold text-emerald-900 mb-1">NCERT Rationale &bull; Correct Option ' + q.options[q.answerIndex].marker + ':</div>' +
+                     '<div>' + q.explanation + '</div></div>';
+        }
+
+        const isRecent = q.tag.includes('2026') || q.tag.includes('2025');
+        const tagClass = isRecent ? 'bg-amber-100 text-amber-900 border-amber-300 font-bold' : 'bg-slate-100 text-slate-700 border-slate-200 font-medium';
+
+        return '<div class="q-card bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-xs space-y-4" data-qnum="' + q.num + '">' +
+               '  <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">' +
+               '    <div class="flex items-center gap-2">' +
+               '      <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white font-extrabold text-xs flex items-center justify-center">Q' + q.num + '</span>' +
+               '      <span class="text-xs font-bold text-slate-800">' + q.topic + '</span>' +
+               '    </div>' +
+               '    <span class="text-[11px] px-2.5 py-0.5 rounded-full border ' + tagClass + '">' + q.tag + '</span>' +
+               '  </div>' +
+               '  <div class="text-xs sm:text-sm font-medium text-slate-900 leading-relaxed whitespace-pre-line">' + q.stem + '</div>' +
+               '  <div class="space-y-2 pt-1">' + optionsHtml + '</div>' +
+               explHtml +
+               '</div>';
+      }).join('');
+
+      if (isQuiz) {
+        container.querySelectorAll('.opt-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const qNum = parseInt(btn.dataset.qnum, 10);
+            const optIdx = parseInt(btn.dataset.optidx, 10);
+            const userAnswers = (state.view === 'kcet') ? state.kcetSelections : state.neetSelections;
+            userAnswers[qNum] = optIdx;
+            renderQuestions();
+            updateQuizBannerScore();
+            renderAnswerKeyMatrix();
+            updateHomeStats();
+          });
+        });
+      }
+    }
+
+    function renderAnswerKeyMatrix() {
+      const data = (state.view === 'kcet') ? KCET_DATA : NEET_DATA;
+      const userAnswers = (state.view === 'kcet') ? state.kcetSelections : state.neetSelections;
+      const isQuiz = (state.mode === 'quiz');
+      const matrix = document.getElementById('answerKeyMatrix');
+
+      matrix.innerHTML = data.map(q => {
+        const correctMarker = q.options[q.answerIndex].marker;
+        const userChoice = userAnswers[q.num];
+        let boxClass = 'bg-slate-100 text-slate-700 border-slate-200';
+
+        if (isQuiz && userChoice !== undefined) {
+          if (userChoice === q.answerIndex) {
+            boxClass = 'bg-emerald-600 text-white border-emerald-600';
+          } else {
+            boxClass = 'bg-rose-600 text-white border-rose-600';
+          }
+        } else if (!isQuiz && state.showAnswers) {
+          boxClass = 'bg-emerald-50 text-emerald-800 border-emerald-200';
+        }
+
+        return '<div class="border rounded-lg p-2 text-center ' + boxClass + '">' +
+               '<div class="text-[10px] opacity-75 font-mono">Q' + q.num + '</div>' +
+               '<div class="text-sm font-extrabold">' + correctMarker + '</div>' +
+               '</div>';
+      }).join('');
+    }
+
+    function updateHomeStats() {
+      const kcetAnswered = Object.keys(state.kcetSelections).length;
+      let kcetCorrect = 0;
+      Object.keys(state.kcetSelections).forEach(qNum => {
+        const q = KCET_DATA.find(item => item.num === Number(qNum));
+        if (q && state.kcetSelections[qNum] === q.answerIndex) kcetCorrect++;
+      });
+      const kcetPct = kcetAnswered ? Math.round((kcetCorrect / kcetAnswered) * 100) : 0;
+      document.getElementById('statKcetProgress').textContent = kcetAnswered + ' / ' + KCET_DATA.length;
+      document.getElementById('statKcetScore').textContent = 'Score: ' + kcetCorrect + ' correct (' + kcetPct + '%)';
+
+      const neetAnswered = Object.keys(state.neetSelections).length;
+      let neetCorrect = 0;
+      Object.keys(state.neetSelections).forEach(qNum => {
+        const q = NEET_DATA.find(item => item.num === Number(qNum));
+        if (q && state.neetSelections[qNum] === q.answerIndex) neetCorrect++;
+      });
+      const neetPct = neetAnswered ? Math.round((neetCorrect / neetAnswered) * 100) : 0;
+      document.getElementById('statNeetProgress').textContent = neetAnswered + ' / ' + NEET_DATA.length;
+      document.getElementById('statNeetScore').textContent = 'Score: ' + neetCorrect + ' correct (' + neetPct + '%)';
+    }
+
+    function updateQuizBannerScore() {
+      const banner = document.getElementById('quizScoreBanner');
+      if (state.mode !== 'quiz') {
+        banner.classList.add('hidden');
+        return;
+      }
+      banner.classList.remove('hidden');
+
+      const data = (state.view === 'kcet') ? KCET_DATA : NEET_DATA;
+      const userAnswers = (state.view === 'kcet') ? state.kcetSelections : state.neetSelections;
+
+      let attempted = 0;
+      let correct = 0;
+      let wrong = 0;
+
+      data.forEach(q => {
+        const choice = userAnswers[q.num];
+        if (choice !== undefined) {
+          attempted++;
+          if (choice === q.answerIndex) {
+            correct++;
+          } else {
+            wrong++;
+          }
+        }
+      });
+
+      const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
+
+      document.getElementById('quizAttemptedCount').textContent = attempted + " / " + data.length;
+      document.getElementById('quizCorrectCount').textContent = correct;
+      document.getElementById('quizWrongCount').textContent = wrong;
+      document.getElementById('quizAccuracy').textContent = accuracy + "%";
+    }
+
+    // Event Handlers
+    navHomeBtn.addEventListener('click', () => switchView('home'));
+    navKcetBtn.addEventListener('click', () => switchView('kcet'));
+    navNeetBtn.addEventListener('click', () => switchView('neet'));
+    navNotesBtn.addEventListener('click', () => switchView('notes'));
+    document.getElementById('brandHomeBtn').addEventListener('click', () => switchView('home'));
+
+    document.getElementById('heroStartKcetBtn').addEventListener('click', () => {
+      state.mode = 'quiz';
+      updateModeButtons();
+      switchView('kcet');
+    });
+
+    document.getElementById('heroStartNeetBtn').addEventListener('click', () => {
+      state.mode = 'quiz';
+      updateModeButtons();
+      switchView('neet');
+    });
+
+    document.getElementById('heroOpenNotesBtn').addEventListener('click', () => switchView('notes'));
+
+    document.getElementById('cardKcetDocBtn').addEventListener('click', () => {
+      state.mode = 'doc';
+      updateModeButtons();
+      switchView('kcet');
+    });
+
+    document.getElementById('cardKcetQuizBtn').addEventListener('click', () => {
+      state.mode = 'quiz';
+      updateModeButtons();
+      switchView('kcet');
+    });
+
+    document.getElementById('cardNeetDocBtn').addEventListener('click', () => {
+      state.mode = 'doc';
+      updateModeButtons();
+      switchView('neet');
+    });
+
+    document.getElementById('cardNeetQuizBtn').addEventListener('click', () => {
+      state.mode = 'quiz';
+      updateModeButtons();
+      switchView('neet');
+    });
+
+    modeDocBtn.addEventListener('click', () => {
+      state.mode = 'doc';
+      updateModeButtons();
+      renderQuestions();
+      updateQuizBannerScore();
+      renderAnswerKeyMatrix();
+    });
+
+    modeQuizBtn.addEventListener('click', () => {
+      state.mode = 'quiz';
+      updateModeButtons();
+      renderQuestions();
+      updateQuizBannerScore();
+      renderAnswerKeyMatrix();
+    });
+
+    function updateModeButtons() {
+      if (state.mode === 'doc') {
+        modeDocBtn.classList.add('bg-white', 'text-emerald-700', 'shadow-xs');
+        modeDocBtn.classList.remove('text-slate-600');
+        modeQuizBtn.classList.remove('bg-white', 'text-emerald-700', 'shadow-xs');
+        modeQuizBtn.classList.add('text-slate-600');
+        toggleAnswersBtn.classList.remove('hidden');
+      } else {
+        modeQuizBtn.classList.add('bg-white', 'text-emerald-700', 'shadow-xs');
+        modeQuizBtn.classList.remove('text-slate-600');
+        modeDocBtn.classList.remove('bg-white', 'text-emerald-700', 'shadow-xs');
+        modeDocBtn.classList.add('text-slate-600');
+        toggleAnswersBtn.classList.add('hidden');
+      }
+    }
+
+    toggleAnswersBtn.addEventListener('click', () => {
+      state.showAnswers = !state.showAnswers;
+      toggleAnswersBtn.textContent = state.showAnswers ? 'Hide Answer Badges' : 'Show Answer Badges';
+      renderQuestions();
+      renderAnswerKeyMatrix();
+    });
+
+    resetQuizBtn.addEventListener('click', () => {
+      if (confirm('Are you sure you want to reset your practice answers for this section?')) {
+        if (state.view === 'kcet') {
+          state.kcetSelections = {};
+        } else {
+          state.neetSelections = {};
+        }
+        renderQuestions();
+        updateQuizBannerScore();
+        renderAnswerKeyMatrix();
+        updateHomeStats();
+      }
+    });
+
+    printBtn.addEventListener('click', () => {
+      window.print();
+    });
+
+    searchInput.addEventListener('input', (e) => {
+      state.searchQuery = e.target.value.trim();
+      renderQuestions();
+    });
+
+    // Initialize Default State
+    switchView('home');
+  </script>
+</body>
+</html>
